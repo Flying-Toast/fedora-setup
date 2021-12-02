@@ -1,0 +1,17 @@
+INSTALL gnome-tweaks
+INSTALL neovim
+INTSALL nmap
+INSTALL wl-clipboard
+
+REMOVE gnome-weather
+REMOVE totem
+REMOVE gnome-connections
+REMOVE gnome-maps
+REMOVE gnome-boxes
+REMOVE gnome-contacts
+REMOVE rhythmbox
+REMOVE gnome-photos
+REMOVE gnome-user-share
+REMOVE simple-scan
+REMOVE vim-minimal
+REMOVE gnome-tour
