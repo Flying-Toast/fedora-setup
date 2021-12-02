@@ -1,0 +1,88 @@
+#!/usr/bin/python
+from http.server import HTTPServer, SimpleHTTPRequestHandler, BaseHTTPRequestHandler
+from cgi import FieldStorage
+from pathlib import Path
+import sys
+import socket
+
+PORT = 8000
+UPLOAD_PAGE_HTML = """
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>File upload</title>
+    </head>
+
+    <body>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input name="filecontent" type="file" multiple required>
+            <br>
+            <br>
+            <input type="submit" value="Upload">
+        </form>
+    </body>
+</html>
+"""
+
+def path_in_cwd(path):
+    cwd = Path.cwd()
+    p = cwd.joinpath(path).resolve()
+    if not p.is_relative_to(cwd):
+        raise Exception("Directory traversal")
+    return p
+
+class FormUploadHandler(BaseHTTPRequestHandler):
+    def log_request(code=None, size=None):
+        pass
+
+    def do_HEAD(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html")
+        self.end_headers()
+
+    def do_GET(self):
+        self.do_HEAD()
+        self.wfile.write(bytes(UPLOAD_PAGE_HTML, "utf-8"))
+
+    def do_POST(self):
+        form = FieldStorage(fp=self.rfile, headers=self.headers, environ={"REQUEST_METHOD":"POST"})
+        fc = form["filecontent"]
+        if not isinstance(fc, list):
+            fc = [fc]
+        for f in fc:
+            fname = f.filename
+            # for files that already exist, append underscores until we get a unique filename
+            while path_in_cwd(fname).exists():
+                fname += "_"
+            dst = path_in_cwd(fname)
+            print(f"RECEIVE {dst}")
+            dst.write_bytes(f.value)
+
+        self.send_response(303)
+        self.send_header("Location", "/")
+        self.end_headers()
+
+def run(handler):
+    host = socket.gethostbyname(socket.getfqdn())
+    print(f"\n\n\n        http://{host}:{PORT}\n\n\n")
+    HTTPServer(("", PORT), handler).serve_forever()
+
+def usage():
+    print(f"Usage: {sys.argv[0]} give/get")
+
+def main():
+    if len(sys.argv) != 2:
+        usage()
+        return
+
+    if sys.argv[1] == "give":
+        run(SimpleHTTPRequestHandler)
+    elif sys.argv[1] == "get":
+        run(FormUploadHandler)
+    else:
+        usage()
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,16 @@
+TODO: automate this
+
+== userChrome ==
+cp userChrome.css ~/.mozilla/firefox/fjewaoijfoiewafj.default-release/chrome/userChrome.css
+
+== about:config ==
+network.IDN_show_punycode true
+extensions.pocket.enabled false
+reader.parse-on-load.enabled false
+browser.sessionstore.warnOnQuit true
+browser.urlbar.dnsResolveSingleWordsAfterSearch 0
+browser.tabs.insertAfterCurrent true
+browser.gesture.swipe.right ""
+browser.gesture.swipe.left ""
+toolkit.legacyUserProfileCustomizations.stylesheets true
+browser.download.start_downloads_in_tmp_dir true

@@ -1,0 +1,6 @@
+#!/bin/bash
+FILENAME="$(mktemp)"
+trap "rm $FILENAME" EXIT
+cat > "$FILENAME"
+vim "$FILENAME" > /dev/tty < /dev/tty
+cat "$FILENAME"
