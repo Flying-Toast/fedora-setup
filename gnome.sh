@@ -47,8 +47,8 @@ dconf write /org/gnome/desktop/interface/clock-format "'12h'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/max-screencast-length "uint32 0"
 
 # geary
-#### dconf write /org/gnome/Geary/autoselect false
-#### dconf write /org/gnome/Geary/startup-notifications true
+dconf write /org/gnome/Geary/autoselect false
+dconf write /org/gnome/Geary/startup-notifications true
 
 # other
 dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'standard'"
