@@ -14,7 +14,7 @@ dconf write $TERM_BASE/palette "['rgb(92,99,112)', 'rgb(224,108,117)', 'rgb(152,
 
 # tweaks
 dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita-dark'"
-#### dconf write /org/gnome/shell/enabled-extensions "['launch-new-instance@gnome-shell-extensions.gcampax.github.com']"
+dconf write /org/gnome/shell/enabled-extensions "['launch-new-instance@gnome-shell-extensions.gcampax.github.com']"
 dconf write /org/gnome/desktop/input-sources/xkb-options "['lv3:ralt_switch', 'caps:escape']"
 dconf write /org/gnome/desktop/interface/enable-hot-corners false
 dconf write /org/gnome/desktop/peripherals/touchpad/click-method "'areas'"

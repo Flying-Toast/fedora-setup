@@ -3,6 +3,7 @@ INSTALL neovim
 INTSALL nmap
 INSTALL wl-clipboard
 INSTALL geary
+INSTALL gnome-extensions-app
 
 REMOVE gnome-weather
 REMOVE totem
