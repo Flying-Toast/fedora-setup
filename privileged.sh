@@ -1,5 +1,7 @@
 #!/bin/bash
 
+updatedb
+
 ln -s /usr/bin/nvim /usr/bin/vim
 
 awk '$1=="INSTALL"{print $2}' packages | xargs dnf install -y
