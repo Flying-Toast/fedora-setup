@@ -15,3 +15,4 @@ REMOVE gnome-user-share
 REMOVE simple-scan
 REMOVE vim-minimal
 REMOVE gnome-tour
+REMOVE mediawriter
