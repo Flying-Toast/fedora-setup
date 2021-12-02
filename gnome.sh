@@ -20,6 +20,7 @@ dconf write /org/gnome/desktop/interface/enable-hot-corners false
 dconf write /org/gnome/desktop/peripherals/touchpad/click-method "'areas'"
 
 # gnome settings
+dconf write /org/gnome/desktop/search-providers/disabled "['org.gnome.Software.desktop']"
 dconf write /org/gnome/desktop/privacy/remember-recent-files false
 dconf write /org/gnome/desktop/privacy/recent-files-max-age 1
 dconf write /org/gnome/settings-daemon/plugins/media-keys/home "['<Super>e']"
