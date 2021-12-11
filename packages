@@ -4,6 +4,7 @@ INTSALL nmap
 INSTALL wl-clipboard
 INSTALL geary
 INSTALL gnome-extensions-app
+INSTALL vlc
 
 REMOVE gnome-weather
 REMOVE totem
