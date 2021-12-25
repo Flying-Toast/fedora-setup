@@ -4,8 +4,12 @@ INTSALL nmap
 INSTALL wl-clipboard
 INSTALL geary
 INSTALL gnome-extensions-app
+INSTALL plocate
+
+packages from rpmfusion-free:
 INSTALL vlc
 
+REMOVE mlocate
 REMOVE gnome-weather
 REMOVE totem
 REMOVE gnome-connections
