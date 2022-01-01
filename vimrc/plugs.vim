@@ -11,5 +11,6 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'cespare/vim-toml'
 Plug 'evanleck/vim-svelte'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'tpope/vim-sleuth'
 call plug#end()
 
