@@ -8,9 +8,9 @@ dconf write $TERM_BASE/font "'DejaVu Sans Mono 12'"
 dconf write $TERM_BASE/audible-bell false
 dconf write $TERM_BASE/scrollbar-policy "'never'"
 dconf write $TERM_BASE/use-theme-colors false
-dconf write $TERM_BASE/foreground-color "'#ABB2BF'"
-dconf write $TERM_BASE/background-color "'#282C34'"
-dconf write $TERM_BASE/palette "['rgb(92,99,112)', 'rgb(224,108,117)', 'rgb(152,195,121)', 'rgb(209,154,102)', 'rgb(97,175,239)', 'rgb(198,120,221)', 'rgb(86,182,194)', 'rgb(171,178,191)', 'rgb(92,99,112)', 'rgb(224,108,117)', 'rgb(152,195,121)', 'rgb(209,154,102)', 'rgb(97,175,239)', 'rgb(198,120,221)', 'rgb(86,182,194)', 'rgb(171,178,191)']"
+dconf write $TERM_BASE/foreground-color "'#d0d0d0'"
+dconf write $TERM_BASE/background-color "'#151515'"
+dconf write $TERM_BASE/palette "['#151515', '#ac4142', '#90a959', '#f4bf75', '#6a9fb5', '#aa759f', '#75b5aa', '#d0d0d0', '#505050', '#d28445', '#202020', '#303030', '#b0b0b0', '#e0e0e0', '#8f5536', '#f5f5f5']"
 
 # tweaks
 dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita-dark'"

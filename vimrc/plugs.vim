@@ -1,5 +1,5 @@
 call plug#begin()
-Plug 'joshdick/onedark.vim'
+Plug 'Flying-Toast/vim-toasty'
 Plug 'itchyny/lightline.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'KabbAmine/vCoolor.vim'
