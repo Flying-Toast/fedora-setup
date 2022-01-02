@@ -102,3 +102,6 @@ let g:vim_search_pulse_mode = 'pattern'
 
 let g:svelte_preprocessor_tags = [{ 'name': 'ts', 'tag': 'script', 'as': 'typescript' }]
 let g:svelte_preprocessors = ['ts']
+
+set title
+set titlestring=VIM\ \ \ %F
