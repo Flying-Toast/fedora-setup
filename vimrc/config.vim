@@ -8,6 +8,8 @@ if (empty($TMUX))
 	endif
 endif
 
+let mapleader = ","
+
 syntax on
 colorscheme onedark
 
