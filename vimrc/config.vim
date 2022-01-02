@@ -13,6 +13,10 @@ let mapleader = ","
 syntax on
 colorscheme onedark
 
+" visible trailing whitespace
+highlight TrailingWhitespace gui=strikethrough cterm=strikethrough guifg=fg ctermfg=fg ctermbg=red guibg=red
+match TrailingWhitespace /\s\+$/
+
 set shiftwidth=8
 set tabstop=8
 autocmd FileType haskell setlocal expandtab shiftwidth=4 tabstop=4
