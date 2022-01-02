@@ -82,11 +82,11 @@ let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
 function StripTrailingWhitespace()
-	if &ft != "markdown"
-		%s/\s\+$//e
-	endif
+	let l:saved_view = winsaveview()
+	keeppatterns %s/\s\+$//e
+	call winrestview(l:saved_view)
 endfunction
-autocmd BufWritePre * call StripTrailingWhitespace()
+nnoremap <Leader>s :call StripTrailingWhitespace()<CR>
 
 highlight link Sneak None
 omap s <Plug>Sneak_s
