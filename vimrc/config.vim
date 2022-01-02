@@ -105,3 +105,5 @@ let g:svelte_preprocessors = ['ts']
 
 set title
 set titlestring=VIM\ \ \ %F
+
+set nomodeline
