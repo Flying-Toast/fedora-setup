@@ -1,8 +1,0 @@
-dnf remove power-profiles-daemon
-dnf install tlp tlp-rdw
-
-tlp-stat -s # and if get warning about systemd-rfkill:
-	systemctl mask systemd-rfkill.socket
-
-In /etc/tlp.conf:
-	set DEVICES_TO_DISABLE_ON_STARTUP="bluetooth"
