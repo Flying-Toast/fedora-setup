@@ -94,6 +94,7 @@ nnoremap <Leader>s :call StripTrailingWhitespace()<CR>
 highlight link Sneak None
 omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
+let g:sneak#label = 1
 
 " Matching <> messes up delimitMate with less-than sign
 autocmd FileType rust setlocal matchpairs-=<:>
