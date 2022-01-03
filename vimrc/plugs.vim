@@ -12,5 +12,6 @@ Plug 'cespare/vim-toml'
 Plug 'evanleck/vim-svelte'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'tpope/vim-sleuth'
+Plug 'vim-scripts/argtextobj.vim'
 call plug#end()
 
