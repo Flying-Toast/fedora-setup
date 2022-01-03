@@ -86,10 +86,18 @@ let delimitMate_expand_space = 1
 
 function StripTrailingWhitespace()
 	let l:saved_view = winsaveview()
-	keeppatterns %s/\s\+$//e
+	redir => l:matches
+		silent keeppatterns %s/\s\+$//ne
+	redir END
+	let l:nsubbed = "0"
+	if len(l:matches) != 0
+		let l:nsubbed = trim(split(l:matches, ' ')[0])
+	endif
+	silent keeppatterns %s/\s\+$//e
 	call winrestview(l:saved_view)
+	echo "Trimmed " . l:nsubbed . " line(s)"
 endfunction
-nnoremap <Leader>s :call StripTrailingWhitespace()<CR>
+nnoremap <silent> <Leader>s :call StripTrailingWhitespace()<CR>
 
 highlight link Sneak None
 omap s <Plug>Sneak_s
