@@ -31,6 +31,7 @@ set nowrap
 set laststatus=2
 set noshowmode
 let g:lightline = {'colorscheme': 'toasty'}
+let g:lightline.tabline = {'left': [['tabs']], 'right': []}
 set showcmd
 
 " make backspace act normally
