@@ -101,7 +101,6 @@ function StripTrailingWhitespace()
 endfunction
 nnoremap <silent> <Leader>s :call StripTrailingWhitespace()<CR>
 
-highlight link Sneak None
 omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
 let g:sneak#label = 1
