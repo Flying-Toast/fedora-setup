@@ -1,6 +1,7 @@
 " Dont log viminfo
 set viminfo=
 
+" truecolor for onedark
 if (empty($TMUX))
 	if (has("termguicolors"))
 		set termguicolors
@@ -10,7 +11,7 @@ endif
 let mapleader = ","
 
 syntax on
-colorscheme toasty
+colorscheme onedark
 
 " visible trailing whitespace
 highlight TrailingWhitespace gui=strikethrough cterm=strikethrough guifg=fg ctermfg=fg ctermbg=red guibg=red
@@ -30,7 +31,7 @@ set nowrap
 
 set laststatus=2
 set noshowmode
-let g:lightline = {'colorscheme': 'toasty'}
+let g:lightline = {'colorscheme': 'onedark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
 set showcmd
 
