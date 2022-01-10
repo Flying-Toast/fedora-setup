@@ -13,5 +13,6 @@ Plug 'evanleck/vim-svelte'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-scripts/argtextobj.vim'
+Plug 'gregsexton/MatchTag'
 call plug#end()
 
