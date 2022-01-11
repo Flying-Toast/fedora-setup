@@ -5,6 +5,7 @@ INSTALL wl-clipboard
 INSTALL geary
 INSTALL gnome-extensions-app
 INSTALL plocate
+INSTALL ImageMagick
 
 packages from rpmfusion-free:
 INSTALL vlc
