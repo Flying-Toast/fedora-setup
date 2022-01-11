@@ -68,7 +68,7 @@ inoremap <silent> <C-s> <Esc>:w<CR>
 nnoremap <silent> <Tab> :tabnext<CR>
 nnoremap <silent> <S-Tab> :tabprevious<CR>
 
-nnoremap <Space> :
+noremap <Space> :
 
 " use alt-[left|right] to traverse buffer history
 nnoremap <silent> <M-Left> :bprev<CR>
