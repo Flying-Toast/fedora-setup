@@ -8,6 +8,7 @@ INSTALL plocate
 
 packages from rpmfusion-free:
 INSTALL vlc
+INSTALL ffmpeg
 
 REMOVE mlocate
 REMOVE gnome-weather
