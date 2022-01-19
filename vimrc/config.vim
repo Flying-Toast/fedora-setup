@@ -15,12 +15,12 @@ colorscheme onedark
 
 " visible trailing whitespace
 match TrailingWhitespace /\s\+$/
-function ShowTrailingWhitespace()
+func ShowTrailingWhitespace()
 	highlight TrailingWhitespace gui=strikethrough cterm=strikethrough guifg=white ctermfg=white ctermbg=red guibg=red
-endfunction
-function HideTrailingWhitespace()
+endfunc
+func HideTrailingWhitespace()
 	highlight clear TrailingWhitespace
-endfunction
+endfunc
 call ShowTrailingWhitespace()
 autocmd InsertEnter * call HideTrailingWhitespace()
 autocmd InsertLeave * call ShowTrailingWhitespace()
@@ -51,9 +51,9 @@ set clipboard+=unnamedplus
 
 set shm+=I
 
-function CommandAbbrev(from, to)
+func CommandAbbrev(from, to)
 	execute 'cabbrev ' . a:from . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:to . '" : "' . a:from . '"<CR>'
-endfunction
+endfunc
 
 call CommandAbbrev("f", "find")
 
@@ -94,7 +94,7 @@ let g:netrw_dirhistmax=0
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
-function StripTrailingWhitespace()
+func StripTrailingWhitespace()
 	let l:saved_view = winsaveview()
 	redir => l:matches
 		silent keeppatterns %s/\s\+$//ne
@@ -106,7 +106,7 @@ function StripTrailingWhitespace()
 	silent keeppatterns %s/\s\+$//e
 	call winrestview(l:saved_view)
 	echo "Trimmed " . l:nsubbed . " line(s)"
-endfunction
+endfunc
 nnoremap <silent> <Leader>s :call StripTrailingWhitespace()<CR>
 
 omap s <Plug>Sneak_s
