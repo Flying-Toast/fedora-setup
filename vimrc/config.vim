@@ -14,8 +14,16 @@ syntax on
 colorscheme onedark
 
 " visible trailing whitespace
-highlight TrailingWhitespace gui=strikethrough cterm=strikethrough guifg=fg ctermfg=fg ctermbg=black guibg=black
 match TrailingWhitespace /\s\+$/
+function ShowTrailingWhitespace()
+	highlight TrailingWhitespace gui=strikethrough cterm=strikethrough guifg=white ctermfg=white ctermbg=red guibg=red
+endfunction
+function HideTrailingWhitespace()
+	highlight clear TrailingWhitespace
+endfunction
+call ShowTrailingWhitespace()
+autocmd InsertEnter * call HideTrailingWhitespace()
+autocmd InsertLeave * call ShowTrailingWhitespace()
 
 set shiftwidth=8
 set tabstop=8
