@@ -14,7 +14,7 @@ syntax on
 colorscheme onedark
 
 " visible trailing whitespace
-highlight TrailingWhitespace gui=strikethrough cterm=strikethrough guifg=fg ctermfg=fg ctermbg=red guibg=red
+highlight TrailingWhitespace gui=strikethrough cterm=strikethrough guifg=fg ctermfg=fg ctermbg=black guibg=black
 match TrailingWhitespace /\s\+$/
 
 set shiftwidth=8
