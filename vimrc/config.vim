@@ -14,7 +14,7 @@ syntax on
 colorscheme onedark
 
 " visible trailing whitespace
-match TrailingWhitespace /\s\+$/
+autocmd VimEnter,WinEnter * match TrailingWhitespace /\s\+$/
 func ShowTrailingWhitespace()
 	highlight TrailingWhitespace gui=strikethrough cterm=strikethrough guifg=fg ctermfg=fg ctermbg=red guibg=red
 endfunc
