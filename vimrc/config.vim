@@ -16,7 +16,7 @@ colorscheme onedark
 " visible trailing whitespace
 autocmd VimEnter,WinEnter * match TrailingWhitespace /\s\+$/
 func ShowTrailingWhitespace()
-	highlight TrailingWhitespace gui=strikethrough cterm=strikethrough guifg=fg ctermfg=fg ctermbg=red guibg=red
+	highlight TrailingWhitespace gui=strikethrough,underline cterm=strikethrough,underline guifg=red ctermfg=red
 endfunc
 func HideTrailingWhitespace()
 	highlight clear TrailingWhitespace
