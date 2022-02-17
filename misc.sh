@@ -16,3 +16,7 @@ touch ~/Templates/empty
 
 mv ~/.bashrc ./bashrc.old
 cp ./bashrc ~/.bashrc
+
+mkdir -p ~/.local/bin
+mv ~/.local/bin ./localbin_OLD
+cp -r ./localbin ~/.local/bin
