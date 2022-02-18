@@ -3,6 +3,7 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 from cgi import FieldStorage
 from pathlib import Path
 import sys
+import socket
 
 PORT = 8000
 UPLOAD_PAGE_HTML = """
@@ -61,7 +62,8 @@ class FormUploadHandler(SimpleHTTPRequestHandler):
         self.end_headers()
 
 def run(handler):
-    print(f"running on port {PORT}")
+    host = socket.gethostbyname(socket.getfqdn())
+    print(f"{host}:{PORT}")
     HTTPServer(("", PORT), handler).serve_forever()
 
 def usage():
