@@ -14,5 +14,6 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'gregsexton/MatchTag'
+Plug 'elixir-editors/vim-elixir'
 call plug#end()
 
