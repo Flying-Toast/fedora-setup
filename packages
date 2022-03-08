@@ -6,6 +6,7 @@ INSTALL geary
 INSTALL gnome-extensions-app
 INSTALL plocate
 INSTALL ImageMagick
+INSTALL elixir
 
 packages from rpmfusion-free:
 INSTALL vlc
