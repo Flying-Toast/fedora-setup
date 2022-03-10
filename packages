@@ -7,6 +7,7 @@ INSTALL gnome-extensions-app
 INSTALL plocate
 INSTALL ImageMagick
 INSTALL elixir
+INSTALL nmap
 
 packages from rpmfusion-free:
 INSTALL vlc
