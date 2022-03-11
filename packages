@@ -8,6 +8,7 @@ INSTALL plocate
 INSTALL ImageMagick
 INSTALL elixir
 INSTALL nmap
+INSTALL erlang
 
 packages from rpmfusion-free:
 INSTALL vlc
