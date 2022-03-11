@@ -1,3 +1,4 @@
+== from the default repos ==
 INSTALL gnome-tweaks
 INSTALL neovim
 INTSALL nmap
@@ -6,15 +7,18 @@ INSTALL geary
 INSTALL gnome-extensions-app
 INSTALL plocate
 INSTALL ImageMagick
-INSTALL elixir
 INSTALL nmap
-INSTALL erlang
 
-packages from rpmfusion-free:
+== elixir development stuff ==
+INSTALL elixir
+INSTALL erlang
+INSTALL inotify-tools (for phoenix live reload)
+
+== from rpmfusion-free ==
 INSTALL vlc
 INSTALL ffmpeg
 
-REMOVE mlocate
+REMOVE mlocate (replaced with plocate. TODO: looks like plocate will be made default in F36, remove this and plocate install ^^ if so)
 REMOVE gnome-weather
 REMOVE totem
 REMOVE gnome-connections
