@@ -7,4 +7,3 @@ reader.parse-on-load.enabled false
 browser.sessionstore.warnOnQuit true
 browser.urlbar.dnsResolveSingleWordsAfterSearch 0
 browser.tabs.insertAfterCurrent true
-pdfjs.defaultZoomValue = "page-width"
