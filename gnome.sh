@@ -58,3 +58,5 @@ dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'standard'"
 dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 dconf write /org/gnome/gnome-screenshot/last-save-directory "'file://$HOME/workspace'"
 dconf write /org/gnome/desktop/notifications/show-in-lock-screen false
+dconf write /desktop/ibus/panel/emoji/unicode-hotkey "@as []"
+dconf write /desktop/ibus/panel/emoji/hotkey "@as []"
