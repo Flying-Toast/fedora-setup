@@ -93,6 +93,7 @@ let g:netrw_dirhistmax=0
 let NERDTreeMouseMode=2
 let NERDTreeBookmarksFile="/dev/null"
 let NERDTreeHighlightCursorline=0
+let NERDTreeCascadeSingleChildDir=0
 noremap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 command Te tabnew | NERDTree
 
