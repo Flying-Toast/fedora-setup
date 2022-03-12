@@ -96,6 +96,7 @@ let NERDTreeHighlightCursorline=0
 let NERDTreeCascadeSingleChildDir=0
 " use ctrl-click to open nerdtree entries in new tab:
 autocmd FileType nerdtree nmap <buffer> <C-LeftMouse> <LeftMouse>T
+autocmd FileType nerdtree setlocal wrap
 noremap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 command Te tabnew | NERDTree
 
