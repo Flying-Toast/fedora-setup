@@ -129,3 +129,6 @@ set title
 set titlestring=VIM\ \ \ %F
 
 set nomodeline
+
+" Highlight quotes as part of the string in elixir
+hi def link elixirStringDelimiter String
