@@ -90,6 +90,14 @@ let g:netrw_liststyle=3
 let g:netrw_bufsettings="noma nomod nowrap ro nobl"
 let g:netrw_dirhistmax=0
 
+let NERDTreeMouseMode=2
+let NERDTreeBookmarksFile="/dev/null"
+let NERDTreeHighlightCursorline=0
+noremap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+command Te tabnew | NERDTree
+
+set mouse=a
+
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
