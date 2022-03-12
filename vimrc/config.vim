@@ -96,15 +96,6 @@ let NERDTreeHighlightCursorline=0
 let NERDTreeCascadeSingleChildDir=0
 " use ctrl-click to open nerdtree entries in new tab:
 autocmd FileType nerdtree nmap <buffer> <C-LeftMouse> <LeftMouse>T
-""""" disable lightline on nerdtree:
-autocmd FileType nerdtree call DisableLightlineOnNerdtree()
-autocmd WinEnter,BufWinEnter,TabEnter * call DisableLightlineOnNerdtree()
-
-func DisableLightlineOnNerdtree()
-	let nerdtree_winnr = index(map(range(1, winnr('$')), {_,v -> getbufvar(winbufnr(v), '&ft')}), 'nerdtree') + 1
-	call timer_start(0, {-> nerdtree_winnr && setwinvar(nerdtree_winnr, '&stl', '%#Normal#')})
-endfunc
-"""""
 noremap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 command Te tabnew | NERDTree
 
