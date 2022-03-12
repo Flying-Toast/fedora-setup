@@ -160,8 +160,11 @@ func DoStartupSetup()
 	terminal
 	call OnTerminalMode()
 	NERDTree
+	wincmd w
 
 	tabm 0
 	tabnext
 endfunc
 autocmd VimEnter * call DoStartupSetup()
+
+noremap <C-Space> <Esc>1gt<CR>
