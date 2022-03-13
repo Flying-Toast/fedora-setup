@@ -188,3 +188,16 @@ endfunc
 autocmd VimEnter * call DoStartupSetup()
 
 noremap <C-Space> <Esc>1gt<CR>
+
+" open a terminal below the current buffer
+func CreatePopupTerm()
+	belowright 12split
+	enew
+	call termopen(&shell, {'on_exit': 'OnPopupTermExit'})
+endfunc
+func OnPopupTermExit(job_id, code, event)
+	close
+endfunc
+
+" Leader-t for popup term
+noremap <silent> <Leader>t <Esc>:call CreatePopupTerm()<CR>
