@@ -187,7 +187,15 @@ func DoStartupSetup()
 endfunc
 autocmd VimEnter * call DoStartupSetup()
 
-noremap <C-Space> <Esc>1gt<CR>
+func OnCtrlSpace()
+	let l:lasttabnr = tabpagenr("#")
+	if tabpagenr() ==# 1 && l:lasttabnr !=# 0
+		execute l:lasttabnr . "tabn"
+	else
+		1tabn
+	endif
+endfunc
+noremap <silent> <C-Space> <Esc>:call OnCtrlSpace()<CR>
 
 " open a terminal below the current buffer
 func CreatePopupTerm()
