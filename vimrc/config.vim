@@ -94,8 +94,13 @@ let NERDTreeMouseMode=2
 let NERDTreeBookmarksFile="/dev/null"
 let NERDTreeHighlightCursorline=0
 let NERDTreeCascadeSingleChildDir=0
-" use ctrl-click to open nerdtree entries in new tab:
-autocmd FileType nerdtree nmap <buffer> <C-LeftMouse> <LeftMouse>T
+"""
+" see https://github.com/preservim/nerdtree/issues/323
+autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<2-LeftMouse>', 'scope': "FileNode", 'callback': "OpenInTab", 'override': 1})
+func OpenInTab(node)
+	call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
+endfunc
+"""
 autocmd FileType nerdtree setlocal wrap
 noremap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 command Te tabnew | NERDTree
