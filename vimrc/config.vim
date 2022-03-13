@@ -105,6 +105,7 @@ let NERDTreeHighlightCursorline=0
 let NERDTreeCascadeSingleChildDir=0
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
+let NERDTreeMapMenu="<RightMouse>"
 """
 " see https://github.com/preservim/nerdtree/issues/323
 autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<2-LeftMouse>', 'scope': "FileNode", 'callback': "OpenInTab", 'override': 1})
