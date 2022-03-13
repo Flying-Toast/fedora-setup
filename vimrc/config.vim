@@ -42,12 +42,19 @@ set noshowmode
 let g:lightline = {'colorscheme': 'onedark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
 let g:lightline.tab = {'active': ['customtabname', 'modified'], 'inactive': ['customtabname', 'modified']}
-let g:lightline.tab_component_function = {'customtabname': 'CustomTabName', 'modified': 'lightline#tab#modified'}
+let g:lightline.tab_component_function = {'customtabname': 'CustomTabName', 'modified': 'CustomModified'}
 func CustomTabName(n)
+	if a:n ==# 1
+		return "@"
+	else
+		return g:lightline#tab#filename(a:n)
+	endif
+endfunc
+func CustomModified(n)
 	if a:n ==# 1
 		return ""
 	else
-		return g:lightline#tab#filename(a:n)
+		return g:lightline#tab#modified(a:n)
 	endif
 endfunc
 set showcmd
