@@ -101,11 +101,9 @@ let g:netrw_dirhistmax=0
 
 let NERDTreeMouseMode=2
 let NERDTreeBookmarksFile="/dev/null"
-let NERDTreeHighlightCursorline=0
 let NERDTreeCascadeSingleChildDir=0
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
-let NERDTreeMapMenu="<RightMouse>"
 """
 " see https://github.com/preservim/nerdtree/issues/323
 autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<2-LeftMouse>', 'scope': "FileNode", 'callback': "OpenInTab", 'override': 1})
@@ -113,7 +111,13 @@ func OpenInTab(node)
 	call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
 endfunc
 """
-autocmd FileType nerdtree setlocal wrap
+func DoNERDTreeStuff()
+	setlocal wrap
+	highlight CursorLine cterm=reverse gui=reverse
+	" right click for context menu
+	map <buffer> <RightMouse> <LeftMouse>m
+endfunc
+autocmd FileType nerdtree call DoNERDTreeStuff()
 noremap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 command Te tabnew | NERDTree
 
