@@ -41,6 +41,15 @@ set laststatus=2
 set noshowmode
 let g:lightline = {'colorscheme': 'onedark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
+let g:lightline.tab = {'active': ['customtabname', 'modified'], 'inactive': ['customtabname', 'modified']}
+let g:lightline.tab_component_function = {'customtabname': 'CustomTabName', 'modified': 'lightline#tab#modified'}
+func CustomTabName(n)
+	if a:n ==# 1
+		return ""
+	else
+		return g:lightline#tab#filename(a:n)
+	endif
+endfunc
 set showcmd
 
 " make backspace act normally
