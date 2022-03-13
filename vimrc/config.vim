@@ -194,6 +194,7 @@ func CreatePopupTerm()
 	belowright 12split
 	enew
 	call termopen(&shell, {'on_exit': 'OnPopupTermExit'})
+	startinsert
 endfunc
 func OnPopupTermExit(job_id, code, event)
 	close
