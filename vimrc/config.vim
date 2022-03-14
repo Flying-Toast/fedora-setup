@@ -183,14 +183,16 @@ set nomodeline
 hi def link elixirStringDelimiter String
 
 func OnVimStartup()
-	tabnew
+	if argc() > 0
+		tabnew
+		tabm 0
+	endif
 
 	terminal
 	call OnTerminalMode()
 	NERDTree
 	wincmd w
 
-	tabm 0
 	tabnext
 endfunc
 autocmd VimEnter * call OnVimStartup()
