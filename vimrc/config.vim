@@ -173,8 +173,7 @@ set nomodeline
 " Highlight quotes as part of the string in elixir
 hi def link elixirStringDelimiter String
 
-" called when vim is opened without a file
-func DoStartupSetup()
+func OnVimStartup()
 	tabnew
 
 	terminal
@@ -185,7 +184,7 @@ func DoStartupSetup()
 	tabm 0
 	tabnext
 endfunc
-autocmd VimEnter * call DoStartupSetup()
+autocmd VimEnter * call OnVimStartup()
 
 func OnCtrlSpace()
 	let l:lasttabnr = tabpagenr("#")
