@@ -8,6 +8,8 @@ if (empty($TMUX))
 	endif
 endif
 
+let g:project_mode_on = 0
+
 let mapleader = ","
 
 syntax on
@@ -44,14 +46,14 @@ let g:lightline.tabline = {'left': [['tabs']], 'right': []}
 let g:lightline.tab = {'active': ['customtabname', 'modified'], 'inactive': ['customtabname', 'modified']}
 let g:lightline.tab_component_function = {'customtabname': 'CustomTabName', 'modified': 'CustomModified'}
 func CustomTabName(n)
-	if a:n ==# 1
+	if a:n ==# 1 && g:project_mode_on
 		return "@"
 	else
 		return g:lightline#tab#filename(a:n)
 	endif
 endfunc
 func CustomModified(n)
-	if a:n ==# 1
+	if a:n ==# 1 && g:project_mode_on
 		return ""
 	else
 		return g:lightline#tab#modified(a:n)
@@ -119,9 +121,9 @@ func OpenInTab(node)
 	call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
 endfunc
 """
-" if `i` is pressed in NERDTree in the first tab, focus the terminal instead
+" if `i` is pressed in NERDTree in project tab, focus the terminal instead
 func OnNERDTreeI()
-	if tabpagenr() ==# 1
+	if tabpagenr() ==# 1 && g:project_mode_on
 		wincmd b
 		startinsert
 	endif
@@ -182,11 +184,16 @@ set nomodeline
 " Highlight quotes as part of the string in elixir
 hi def link elixirStringDelimiter String
 
-func OnVimStartup()
-	if argc() > 0
-		tabnew
-		tabm 0
+func StartProjectMode()
+	if g:project_mode_on
+		echo "Project mode is already enabled"
+		return
 	endif
+
+	let g:project_mode_on = 1
+
+	tabnew
+	tabm 0
 
 	terminal
 	call OnTerminalMode()
@@ -195,9 +202,14 @@ func OnVimStartup()
 
 	tabnext
 endfunc
-autocmd VimEnter * call OnVimStartup()
+
+noremap <silent> <Leader>p <Esc>:call StartProjectMode()<CR>
 
 func OnCtrlSpace()
+	if !g:project_mode_on
+		return
+	endif
+
 	let l:lasttabnr = tabpagenr("#")
 	if tabpagenr() ==# 1 && l:lasttabnr !=# 0
 		execute l:lasttabnr . "tabn"
