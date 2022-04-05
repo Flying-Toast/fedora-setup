@@ -116,13 +116,9 @@ let NERDTreeMinimalUI=1
 let NERDTreeMapOpenSplit="S"
 """
 " see https://github.com/preservim/nerdtree/issues/323
-autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<2-LeftMouse>', 'scope': "FileNode", 'callback': "OnNERDTreeDblClick", 'override': 1})
-func OnNERDTreeDblClick(node)
-	if tabpagenr() ==# 1 && g:project_mode_on
-		call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
-	else
-		call a:node.activate({'reuse': 'all', 'where': 'p', 'keepopen': 0})
-	endif
+autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<2-LeftMouse>', 'scope': "FileNode", 'callback': "OpenInTab", 'override': 1})
+func OpenInTab(node)
+	call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
 endfunc
 """
 " if `i` is pressed in NERDTree in project tab, focus the terminal instead
