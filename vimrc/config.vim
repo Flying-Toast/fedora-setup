@@ -229,3 +229,8 @@ endfunc
 
 " Leader-t for popup term
 noremap <silent> <Leader>t <Esc>:call CreatePopupTerm()<CR>
+
+" ctrl-t to open new tab
+noremap <silent> <C-t> <Esc>:tabnew<CR>
+" ctrl-q to close current tab
+noremap <silent> <C-q> <Esc>:q<CR>
