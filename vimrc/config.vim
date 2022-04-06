@@ -192,9 +192,6 @@ func StartProjectMode()
 
 	let g:project_mode_on = 1
 
-	tabnew
-	tabm 0
-
 	terminal
 	call OnTerminalMode()
 	NERDTree
