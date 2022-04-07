@@ -234,3 +234,5 @@ noremap <silent> <Leader>t <Esc>:call CreatePopupTerm()<CR>
 
 " ctrl-q to close current tab
 noremap <silent> <C-q> <Esc>:q<CR>
+" ctrl-q to open new tab
+noremap <silent> <C-t> <Esc>:tabnew<CR>
