@@ -114,6 +114,8 @@ let NERDTreeCascadeSingleChildDir=0
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 let NERDTreeMapOpenSplit="S"
+let NERDTreeShowLineNumbers=1
+autocmd FileType nerdtree setlocal rnu
 """
 " see https://github.com/preservim/nerdtree/issues/323
 autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<2-LeftMouse>', 'scope': "FileNode", 'callback': "OpenInTab", 'override': 1})
