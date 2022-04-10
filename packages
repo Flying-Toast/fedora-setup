@@ -1,34 +1,34 @@
 == from the default repos ==
-INSTALL gnome-tweaks
-INSTALL neovim
-INSTALL wl-clipboard
-INSTALL geary
-INSTALL gnome-extensions-app
-INSTALL plocate
-INSTALL ImageMagick
-INSTALL nmap
++ gnome-tweaks
++ neovim
++ wl-clipboard
++ geary
++ gnome-extensions-app
++ plocate
++ ImageMagick
++ nmap
 
 == elixir development stuff ==
-INSTALL elixir
-INSTALL erlang
-INSTALL inotify-tools (for phoenix live reload)
++ elixir
++ erlang
++ inotify-tools (for phoenix live reload)
 
 == from rpmfusion-free ==
-INSTALL vlc
-INSTALL ffmpeg
++ vlc
++ ffmpeg
 
-REMOVE mlocate (replaced with plocate. TODO: looks like plocate will be made default in F36, remove this and plocate install ^^ if so)
-REMOVE gnome-weather
-REMOVE totem
-REMOVE gnome-connections
-REMOVE gnome-maps
-REMOVE gnome-boxes
-REMOVE gnome-contacts
-REMOVE rhythmbox
-REMOVE gnome-photos
-REMOVE gnome-user-share
-REMOVE simple-scan
-REMOVE vim-minimal
-REMOVE gnome-tour
-REMOVE mediawriter
-REMOVE gedit
+- mlocate (replaced with plocate. TODO: looks like plocate will be made default in F36, remove this and plocate install ^^ if so)
+- gnome-weather
+- totem
+- gnome-connections
+- gnome-maps
+- gnome-boxes
+- gnome-contacts
+- rhythmbox
+- gnome-photos
+- gnome-user-share
+- simple-scan
+- vim-minimal
+- gnome-tour
+- mediawriter
+- gedit
