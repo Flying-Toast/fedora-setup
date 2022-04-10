@@ -1,7 +1,6 @@
 == from the default repos ==
 INSTALL gnome-tweaks
 INSTALL neovim
-INTSALL nmap
 INSTALL wl-clipboard
 INSTALL geary
 INSTALL gnome-extensions-app
