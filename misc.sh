@@ -11,6 +11,7 @@ touch ~/.config/git/config
 git config --global pull.ff only
 git config --global pager.diff "/usr/share/git-core/contrib/diff-highlight | less"
 git config --global init.defaultBranch master
+git config --global merge.conflictstyle diff3
 
 touch ~/Templates/empty
 
