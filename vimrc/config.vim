@@ -239,5 +239,6 @@ noremap <silent> <C-q> <Esc>:q<CR>
 noremap <silent> <C-t> <Esc>:tabnew<CR>
 
 let g:ctrlp_match_window = 'min:10'
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 0 " ARRRRRGH why won't this work??
+let g:ctrlp_cache_dir = '/dev/null' " Eh, I guess this works
 let g:ctrlp_show_hidden = 1
