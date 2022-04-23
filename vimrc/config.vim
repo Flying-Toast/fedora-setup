@@ -197,8 +197,6 @@ func StartProjectMode()
 
 	terminal
 	call OnTerminalMode()
-	NERDTree
-	wincmd w
 
 	tabnext
 endfunc
