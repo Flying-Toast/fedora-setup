@@ -237,3 +237,7 @@ noremap <silent> <Leader>t <Esc>:call CreatePopupTerm()<CR>
 noremap <silent> <C-q> <Esc>:q<CR>
 " ctrl-q to open new tab
 noremap <silent> <C-t> <Esc>:tabnew<CR>
+
+let g:ctrlp_match_window = 'min:10'
+let g:ctrlp_use_caching = 0
+let g:ctrlp_show_hidden = 1
