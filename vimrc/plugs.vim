@@ -16,5 +16,6 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'gregsexton/MatchTag'
 Plug 'elixir-editors/vim-elixir'
 Plug 'preservim/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
