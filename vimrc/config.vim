@@ -75,6 +75,7 @@ endfunc
 
 call CommandAbbrev("f", "find")
 call CommandAbbrev("tm", "tab Man")
+call CommandAbbrev("man", "Man")
 
 func OnTerminalMode()
 	setlocal nonumber norelativenumber
