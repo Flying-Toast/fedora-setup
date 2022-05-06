@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# wallpaper
+cp wallpaper/wallpaper.png ~/Pictures
+dconf write /org/gnome/desktop/background/picture-uri "'file://$HOME/Pictures/wallpaper.png'"
+dconf write /org/gnome/desktop/screensaver/picture-uri "'file://$HOME/Pictures/wallpaper.png'"
+
 # terminal
 TERM_BASE="/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "[='=]")"
 dconf write $TERM_BASE/default-size-columns 84
