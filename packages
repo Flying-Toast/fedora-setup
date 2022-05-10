@@ -4,7 +4,6 @@
 + wl-clipboard
 + geary
 + gnome-extensions-app
-+ plocate
 + ImageMagick
 + nmap
 
@@ -17,7 +16,6 @@
 + vlc
 + ffmpeg
 
-- mlocate (replaced with plocate. TODO: looks like plocate will be made default in F36, remove this and plocate install ^^ if so)
 - gnome-weather
 - totem
 - gnome-connections
