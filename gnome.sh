@@ -3,6 +3,7 @@
 # wallpaper
 cp wallpaper/wallpaper.png ~/Pictures
 dconf write /org/gnome/desktop/background/picture-uri "'file://$HOME/Pictures/wallpaper.png'"
+dconf write /org/gnome/desktop/background/picture-uri-dark "'file://$HOME/Pictures/wallpaper.png'"
 dconf write /org/gnome/desktop/screensaver/picture-uri "'file://$HOME/Pictures/wallpaper.png'"
 
 # terminal
@@ -18,13 +19,13 @@ dconf write $TERM_BASE/background-color "'#282C34'"
 dconf write $TERM_BASE/palette "['rgb(92,99,112)', 'rgb(224,108,117)', 'rgb(152,195,121)', 'rgb(209,154,102)', 'rgb(97,175,239)', 'rgb(198,120,221)', 'rgb(86,182,194)', 'rgb(171,178,191)', 'rgb(92,99,112)', 'rgb(224,108,117)', 'rgb(152,195,121)', 'rgb(209,154,102)', 'rgb(97,175,239)', 'rgb(198,120,221)', 'rgb(86,182,194)', 'rgb(171,178,191)']"
 
 # tweaks
-dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita-dark'"
 dconf write /org/gnome/shell/enabled-extensions "['launch-new-instance@gnome-shell-extensions.gcampax.github.com']"
 dconf write /org/gnome/desktop/input-sources/xkb-options "['lv3:ralt_switch', 'caps:escape']"
 dconf write /org/gnome/desktop/interface/enable-hot-corners false
 dconf write /org/gnome/desktop/peripherals/touchpad/click-method "'areas'"
 
 # gnome settings
+dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
 dconf write /org/gnome/desktop/search-providers/disabled "['org.gnome.Software.desktop']"
 dconf write /org/gnome/desktop/privacy/remember-recent-files false
 dconf write /org/gnome/desktop/privacy/recent-files-max-age 1
