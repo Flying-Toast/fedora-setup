@@ -6,6 +6,7 @@
 + gnome-extensions-app
 + ImageMagick
 + nmap
++ ripgrep
 
 == elixir development stuff ==
 + elixir
