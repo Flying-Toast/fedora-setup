@@ -8,3 +8,5 @@ awk '$1=="-"{print $2}' packages | xargs dnf remove -y
 ln -s /usr/bin/nvim /usr/bin/vim
 
 updatedb
+
+systemctl enable powertop
