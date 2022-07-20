@@ -171,8 +171,6 @@ let g:sneak#label = 1
 autocmd FileType rust setlocal matchpairs-=<:>
 
 set completeopt=noinsert,menuone
-imap <C-j> <C-n>
-imap <C-k> <C-p>
 
 " Disable automatic comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -249,32 +247,7 @@ let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
 nnoremap <C-l> :tabnew<CR>:CtrlP<CR>
 
 if has("nvim")
-	nnoremap <silent> 'f <Esc>:lua vim.lsp.buf.hover()<CR>
-	nnoremap <silent> 'd <Esc>:lua vim.diagnostic.open_float()<CR>
-	nnoremap <silent> gd <Esc>:lua vim.lsp.buf.definition()<CR>
-
-	set laststatus=3
-
-" Let's keep all this yucky lua stuff at the bottom of the file so we can forget it exists :/
-
 lua <<EOF
-	local cmp = require('cmp')
-	cmp.setup({
-		snippet = {
-			expand = function(args)
-				vim.fn["vsnip#anonymous"](args.body)
-			end,
-		},
-		mapping = cmp.mapping.preset.insert({
-			['<CR>'] = cmp.mapping.confirm({ select = true })
-		}),
-		sources = cmp.config.sources({
-			{ name = 'nvim_lsp' },
-			{ name = 'vsnip' },
-			{ name = 'nvim_lsp_signature_help' },
-		})
-	})
-
 	require('nvim-lsp-installer').setup({
 		automatic_installation = true
 	})
@@ -285,10 +258,17 @@ lua <<EOF
 		signs = false,
 	})
 
-	local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-	lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-	lspconfig.clangd.setup({ capabilities = capabilities })
-	lspconfig.jedi_language_server.setup({ capabilities = capabilities })
+	lspconfig.rust_analyzer.setup({})
+	lspconfig.clangd.setup({})
+	lspconfig.jedi_language_server.setup({})
 EOF
+
+	nnoremap <silent> 'f <Esc>:lua vim.lsp.buf.hover()<CR>
+	nnoremap <silent> 'd <Esc>:lua vim.diagnostic.open_float()<CR>
+	nnoremap <silent> 's <Esc>:lua vim.lsp.buf.signature_help()<CR>
+	nnoremap <silent> gd <Esc>:lua vim.lsp.buf.definition()<CR>
+	set omnifunc=v:lua.vim.lsp.omnifunc
+	imap <C-c> <C-x><C-o>
+
+	set laststatus=3
 endif
