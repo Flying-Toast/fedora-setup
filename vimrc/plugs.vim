@@ -18,5 +18,6 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
 call plug#end()
 

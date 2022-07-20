@@ -247,6 +247,9 @@ let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
 nnoremap <C-l> :tabnew<CR>:CtrlP<CR>
 
 lua <<EOF
+require('nvim-lsp-installer').setup({
+	automatic_installation = true
+})
 local lspconfig = require('lspconfig')
 
 vim.diagnostic.config({
@@ -255,6 +258,8 @@ vim.diagnostic.config({
 })
 
 lspconfig.rust_analyzer.setup({})
+lspconfig.clangd.setup({})
+lspconfig.jedi_language_server.setup({})
 EOF
 
 nnoremap <silent> 'f <Esc>:lua vim.lsp.buf.hover()<CR>
