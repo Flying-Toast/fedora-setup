@@ -254,12 +254,7 @@ vim.diagnostic.config({
 	signs = false,
 })
 
-local on_attach = function()
-end
-
-lspconfig.rust_analyzer.setup({
-	on_attach = on_attach
-})
+lspconfig.rust_analyzer.setup({})
 EOF
 
 nnoremap <silent> 'f <Esc>:lua vim.lsp.buf.hover()<CR>
