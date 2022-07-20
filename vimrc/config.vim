@@ -265,6 +265,7 @@ EOF
 
 	nnoremap <silent> 'f <Esc>:lua vim.lsp.buf.hover()<CR>
 	nnoremap <silent> 'd <Esc>:lua vim.diagnostic.open_float()<CR>
+	nnoremap <silent> 's <Esc>:lua vim.lsp.buf.signature_help()<CR>
 	nnoremap <silent> gd <Esc>:lua vim.lsp.buf.definition()<CR>
 	set omnifunc=v:lua.vim.lsp.omnifunc
 	imap <C-c> <C-x><C-o>
