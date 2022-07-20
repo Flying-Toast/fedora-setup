@@ -39,7 +39,7 @@ set rnu
 
 set nowrap
 
-set laststatus=3
+set laststatus=2
 set noshowmode
 let g:lightline = {'colorscheme': 'onedark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
@@ -246,24 +246,28 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
 nnoremap <C-l> :tabnew<CR>:CtrlP<CR>
 
+if has("nvim")
 lua <<EOF
-require('nvim-lsp-installer').setup({
-	automatic_installation = true
-})
-local lspconfig = require('lspconfig')
+	require('nvim-lsp-installer').setup({
+		automatic_installation = true
+	})
+	local lspconfig = require('lspconfig')
 
-vim.diagnostic.config({
-	virtual_text = false, -- turn off the inline lint/error text
-	signs = false,
-})
+	vim.diagnostic.config({
+		virtual_text = false, -- turn off the inline lint/error text
+		signs = false,
+	})
 
-lspconfig.rust_analyzer.setup({})
-lspconfig.clangd.setup({})
-lspconfig.jedi_language_server.setup({})
+	lspconfig.rust_analyzer.setup({})
+	lspconfig.clangd.setup({})
+	lspconfig.jedi_language_server.setup({})
 EOF
 
-nnoremap <silent> 'f <Esc>:lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> 'd <Esc>:lua vim.diagnostic.open_float()<CR>
-nnoremap <silent> gd <Esc>:lua vim.lsp.buf.definition()<CR>
-set omnifunc=v:lua.vim.lsp.omnifunc
-imap <C-c> <C-x><C-o>
+	nnoremap <silent> 'f <Esc>:lua vim.lsp.buf.hover()<CR>
+	nnoremap <silent> 'd <Esc>:lua vim.diagnostic.open_float()<CR>
+	nnoremap <silent> gd <Esc>:lua vim.lsp.buf.definition()<CR>
+	set omnifunc=v:lua.vim.lsp.omnifunc
+	imap <C-c> <C-x><C-o>
+
+	set laststatus=3
+endif
