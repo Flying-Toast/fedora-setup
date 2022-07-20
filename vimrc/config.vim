@@ -39,7 +39,7 @@ set rnu
 
 set nowrap
 
-set laststatus=2
+set laststatus=3
 set noshowmode
 let g:lightline = {'colorscheme': 'onedark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
