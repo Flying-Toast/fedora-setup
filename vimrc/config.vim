@@ -171,6 +171,8 @@ let g:sneak#label = 1
 autocmd FileType rust setlocal matchpairs-=<:>
 
 set completeopt=noinsert,menuone
+imap <C-j> <C-n>
+imap <C-k> <c-p>
 
 " Disable automatic comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
