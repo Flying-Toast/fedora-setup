@@ -245,3 +245,23 @@ let g:ctrlp_mruf_max = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
 nnoremap <C-l> :tabnew<CR>:CtrlP<CR>
+
+lua <<EOF
+local lspconfig = require('lspconfig')
+
+vim.diagnostic.config({
+	virtual_text = false, -- turn off the inline lint/error text
+	signs = false,
+})
+
+local on_attach = function()
+end
+
+lspconfig.rust_analyzer.setup({
+	on_attach = on_attach
+})
+EOF
+
+nnoremap <silent> 'f <Esc>:lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> 'd <Esc>:lua vim.diagnostic.open_float()<CR>
+nnoremap <silent> gd <Esc>:lua vim.lsp.buf.definition()<CR>

@@ -17,5 +17,6 @@ Plug 'gregsexton/MatchTag'
 Plug 'elixir-editors/vim-elixir'
 Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
