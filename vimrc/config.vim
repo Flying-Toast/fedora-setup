@@ -181,7 +181,14 @@ let g:svelte_preprocessor_tags = [{ 'name': 'ts', 'tag': 'script', 'as': 'typesc
 let g:svelte_preprocessors = ['ts']
 
 set title
-set titlestring=VIM\ \ \ %F
+func MakeTitleString()
+	if &ft == 'man'
+		return '%t'
+	else
+		return '%F'
+	endif
+endfunc
+set titlestring=%{%MakeTitleString()%}
 
 set nomodeline
 
