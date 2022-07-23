@@ -107,9 +107,9 @@ nnoremap <S-Tab> <Cmd>tabprevious<CR>
 
 noremap <Space> :
 
-" use alt-[left|right] to traverse buffer history
-nnoremap <M-Left> <Cmd>bprev<CR>
-nnoremap <M-Right> <Cmd>bnext<CR>
+" TODO Remove this reminder once muscle memory has adapted
+nnoremap <M-Left> <Cmd>echo "Use ctrl-o"<CR>
+nnoremap <M-Right> <Cmd>echo "Use ctrl-i"<CR>
 
 set path=**
 
