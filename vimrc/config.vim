@@ -265,28 +265,30 @@ let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
 nnoremap <C-l> :tabnew<CR>:CtrlP<CR>
 
 if has("nvim")
+	set laststatus=3
+
 lua <<EOF
 	require('nvim-lsp-installer').setup({
 		automatic_installation = true
 	})
 	local lspconfig = require('lspconfig')
 
-	vim.diagnostic.config({
-		virtual_text = false, -- turn off the inline lint/error text
-		signs = false,
-	})
+	local on_attach = function(client, bufnr)
+		vim.diagnostic.disable()
 
-	lspconfig.rust_analyzer.setup({})
-	lspconfig.clangd.setup({})
-	lspconfig.jedi_language_server.setup({})
+		vim.bo.omnifunc="v:lua.vim.lsp.omnifunc"
+		local ctrln_handler = function()
+			vim.fn.execute("inoremap <buffer> <expr> <C-n> pumvisible() ? '<C-n>' : '<C-x><C-o>'")
+		end
+		vim.keymap.set('i', '<C-n>', ctrln_handler, { buffer=bufnr, noremap=true })
+	end
+
+	lspconfig.rust_analyzer.setup({ on_attach=on_attach })
+	lspconfig.clangd.setup({ on_attach=on_attach })
+	lspconfig.jedi_language_server.setup({ on_attach=on_attach })
+
+	vim.keymap.set('n', '<C-a>', vim.lsp.buf.hover)
+	vim.keymap.set('i', '<C-j>', vim.lsp.buf.signature_help)
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 EOF
-
-	nnoremap <silent> 'f <Esc>:lua vim.lsp.buf.hover()<CR>
-	nnoremap <silent> 'd <Esc>:lua vim.diagnostic.open_float()<CR>
-	nnoremap <silent> 's <Esc>:lua vim.lsp.buf.signature_help()<CR>
-	nnoremap <silent> gd <Esc>:lua vim.lsp.buf.definition()<CR>
-	set omnifunc=v:lua.vim.lsp.omnifunc
-	imap <C-c> <C-x><C-o>
-
-	set laststatus=3
 endif
