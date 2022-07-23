@@ -95,21 +95,21 @@ autocmd TermOpen * call OnTerminalMode()
 tnoremap <Esc> <C-\><C-n>
 
 " use <Esc> to clear search highlighting
-nnoremap <silent> <Esc> :noh<CR>
+nnoremap <Esc> <Cmd>noh<CR>
 
 " use ctrl-s to save
-noremap <silent> <C-s> <Esc>:w<CR>
-inoremap <silent> <C-s> <Esc>:w<CR>
+noremap <C-s> <Cmd>w<CR>
+inoremap <C-s> <Cmd>w<CR>
 
 " use [shift]-tab to cycle through tabs
-nnoremap <silent> <Tab> :tabnext<CR>
-nnoremap <silent> <S-Tab> :tabprevious<CR>
+nnoremap <Tab> <Cmd>tabnext<CR>
+nnoremap <S-Tab> <Cmd>tabprevious<CR>
 
 noremap <Space> :
 
 " use alt-[left|right] to traverse buffer history
-nnoremap <silent> <M-Left> :bprev<CR>
-nnoremap <silent> <M-Right> :bnext<CR>
+nnoremap <M-Left> <Cmd>bprev<CR>
+nnoremap <M-Right> <Cmd>bnext<CR>
 
 set path=**
 
@@ -146,10 +146,10 @@ func DoNERDTreeStuff()
 	highlight CursorLine cterm=reverse gui=reverse
 	" right click for context menu
 	map <buffer> <RightMouse> <LeftMouse>m
-	nnoremap <buffer> <silent> i :call OnNERDTreeI()<CR>
+	nnoremap <buffer> i <Cmd>call OnNERDTreeI()<CR>
 endfunc
 autocmd FileType nerdtree call DoNERDTreeStuff()
-noremap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+noremap <C-e> <Cmd>NERDTreeToggle<CR>
 command Te tabnew | NERDTree
 
 set mouse=a
@@ -170,7 +170,7 @@ func StripTrailingWhitespace()
 	call winrestview(l:saved_view)
 	echo "Trimmed " . l:nsubbed . " line(s)"
 endfunc
-nnoremap <silent> <Leader>s :call StripTrailingWhitespace()<CR>
+nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 
 omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
@@ -219,7 +219,7 @@ func StartProjectMode()
 	tabnext
 endfunc
 
-noremap <silent> <Leader>p <Esc>:call StartProjectMode()<CR>
+noremap <Leader>p <Cmd>call StartProjectMode()<CR>
 
 func OnCtrlSpace()
 	if GetProjectTabNr() == 0
@@ -234,7 +234,7 @@ func OnCtrlSpace()
 		execute GetProjectTabNr() . "tabn"
 	endif
 endfunc
-noremap <silent> <C-Space> <Esc>:call OnCtrlSpace()<CR>
+noremap <C-Space> <Cmd>call OnCtrlSpace()<CR>
 
 " open a terminal below the current buffer
 func CreatePopupTerm()
@@ -248,12 +248,12 @@ func OnPopupTermExit(job_id, code, event)
 endfunc
 
 " Leader-t for popup term
-noremap <silent> <Leader>t <Esc>:call CreatePopupTerm()<CR>
+noremap <Leader>t <Cmd>call CreatePopupTerm()<CR>
 
 " ctrl-q to close current tab
-noremap <silent> <C-q> <Esc>:q<CR>
+noremap <C-q> <Cmd>q<CR>
 " ctrl-q to open new tab
-noremap <silent> <C-t> <Esc>:tabnew<CR>
+noremap <C-t> <Cmd>tabnew<CR>
 
 let g:ctrlp_match_window = 'min:1,max:20'
 let g:ctrlp_show_hidden = 1
@@ -262,7 +262,7 @@ let g:ctrlp_max_history = 0
 let g:ctrlp_mruf_max = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
-nnoremap <C-l> :tabnew<CR>:CtrlP<CR>
+nnoremap <C-l> <Cmd>tabnew<CR><Cmd>CtrlP<CR>
 
 if has("nvim")
 	set laststatus=3
