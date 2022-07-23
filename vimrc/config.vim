@@ -8,7 +8,16 @@ if (empty($TMUX))
 	endif
 endif
 
-let g:project_mode_on = 0
+" returns the tabnr of the project tab, or 0 if project mode is off
+func GetProjectTabNr()
+	for i in range(1, tabpagenr("$"))
+		if gettabvar(i, "is_project_tab") == 1
+			return i
+		endif
+	endfor
+
+	return 0
+endfunc
 
 let mapleader = ","
 
@@ -46,14 +55,14 @@ let g:lightline.tabline = {'left': [['tabs']], 'right': []}
 let g:lightline.tab = {'active': ['customtabname', 'modified'], 'inactive': ['customtabname', 'modified']}
 let g:lightline.tab_component_function = {'customtabname': 'CustomTabName', 'modified': 'CustomModified'}
 func CustomTabName(n)
-	if a:n ==# 1 && g:project_mode_on
+	if a:n == GetProjectTabNr()
 		return "@"
 	else
 		return g:lightline#tab#filename(a:n)
 	endif
 endfunc
 func CustomModified(n)
-	if a:n ==# 1 && g:project_mode_on
+	if a:n == GetProjectTabNr()
 		return ""
 	else
 		return g:lightline#tab#modified(a:n)
@@ -127,7 +136,7 @@ endfunc
 """
 " if `i` is pressed in NERDTree in project tab, focus the terminal instead
 func OnNERDTreeI()
-	if tabpagenr() ==# 1 && g:project_mode_on
+	if GetProjectTabNr() == tabpagenr()
 		wincmd b
 		startinsert
 	endif
@@ -196,12 +205,13 @@ set nomodeline
 hi def link elixirStringDelimiter String
 
 func StartProjectMode()
-	if g:project_mode_on
+	if GetProjectTabNr() != 0
 		echo "Project mode is already enabled"
 		return
 	endif
 
-	let g:project_mode_on = 1
+	tabmove 0
+	call settabvar(1, "is_project_tab", 1)
 
 	terminal
 	call OnTerminalMode()
@@ -212,15 +222,16 @@ endfunc
 noremap <silent> <Leader>p <Esc>:call StartProjectMode()<CR>
 
 func OnCtrlSpace()
-	if !g:project_mode_on
+	if GetProjectTabNr() == 0
 		return
 	endif
 
 	let l:lasttabnr = tabpagenr("#")
-	if tabpagenr() ==# 1 && l:lasttabnr !=# 0
+
+	if GetProjectTabNr() == tabpagenr() && l:lasttabnr !=# 0
 		execute l:lasttabnr . "tabn"
 	else
-		1tabn
+		execute GetProjectTabNr() . "tabn"
 	endif
 endfunc
 noremap <silent> <C-Space> <Esc>:call OnCtrlSpace()<CR>
