@@ -9,7 +9,5 @@ mv ~/.config/nvim/init.vim init.vim.old
 #install vim-plug:
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-cat plugs.vim >> ~/.config/nvim/init.vim
-vim -c "PlugInstall | qa"
-vim -c "PlugUpdate | qa"
 cat config.vim >> ~/.config/nvim/init.vim
+vim -c "PlugInstall | PlugUpdate | qa"
