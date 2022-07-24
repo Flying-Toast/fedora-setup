@@ -23,14 +23,14 @@ if has("nvim")
 endif
 call plug#end()
 
-" Dont log viminfo
-set viminfo=
+if has("nvim")
+	set shada="NONE"
+else
+	set viminfo=
+endif
 
-" truecolor for onedark
-if (empty($TMUX))
-	if (has("termguicolors"))
-		set termguicolors
-	endif
+if (has("termguicolors"))
+	set termguicolors
 endif
 
 " returns the tabnr of the project tab, or 0 if project mode is off
