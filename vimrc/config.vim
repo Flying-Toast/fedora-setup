@@ -129,6 +129,8 @@ inoremap <C-s> <Cmd>w<CR>
 " use [shift]-tab to cycle through tabs
 nnoremap <Tab> <Cmd>tabnext<CR>
 nnoremap <S-Tab> <Cmd>tabprevious<CR>
+" use Ctrl-u instead of Ctrl-i becauase Tab is the same scancode as Ctrl-i
+noremap <C-u> <C-i>
 
 noremap <Space> :
 
