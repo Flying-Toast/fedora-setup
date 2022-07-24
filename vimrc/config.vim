@@ -289,6 +289,11 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
 nnoremap <C-l> <Cmd>tabnew<CR><Cmd>CtrlP<CR>
 
+" Ctrl-p in insert mode pastes last yank unless completion popup is open
+inoremap <expr> <C-p> pumvisible() ? '<C-p>' : '<C-r>0'
+" Ctrl-k to put last delete/cut/etc into yank yegister
+noremap <C-k> <Cmd>let @0=@"<Cr>
+
 if has("nvim")
 	set laststatus=3
 
