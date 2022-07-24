@@ -15,7 +15,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'gregsexton/MatchTag'
 Plug 'elixir-editors/vim-elixir'
-Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 if has("nvim")
 	Plug 'neovim/nvim-lspconfig'
@@ -141,39 +140,6 @@ noremap Q <Nop>
 let g:netrw_liststyle=3
 let g:netrw_bufsettings="noma nomod nowrap ro nobl"
 let g:netrw_dirhistmax=0
-
-let NERDTreeMouseMode=2
-let NERDTreeBookmarksFile="/dev/null"
-let NERDTreeCascadeSingleChildDir=0
-let NERDTreeShowHidden=1
-let NERDTreeMinimalUI=1
-let NERDTreeMapOpenSplit="S"
-let NERDTreeShowLineNumbers=1
-autocmd FileType nerdtree setlocal rnu
-"""
-" see https://github.com/preservim/nerdtree/issues/323
-autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<2-LeftMouse>', 'scope': "FileNode", 'callback': "OpenInTab", 'override': 1})
-func OpenInTab(node)
-	call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
-endfunc
-"""
-" if `i` is pressed in NERDTree in project tab, focus the terminal instead
-func OnNERDTreeI()
-	if GetProjectTabNr() == tabpagenr()
-		wincmd b
-		startinsert
-	endif
-endfunc
-func DoNERDTreeStuff()
-	setlocal wrap
-	highlight CursorLine cterm=reverse gui=reverse
-	" right click for context menu
-	map <buffer> <RightMouse> <LeftMouse>m
-	nnoremap <buffer> i <Cmd>call OnNERDTreeI()<CR>
-endfunc
-autocmd FileType nerdtree call DoNERDTreeStuff()
-noremap <C-e> <Cmd>NERDTreeToggle<CR>
-command Te tabnew | NERDTree
 
 set mouse=a
 
