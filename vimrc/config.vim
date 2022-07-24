@@ -140,6 +140,7 @@ noremap Q <Nop>
 let g:netrw_liststyle=3
 let g:netrw_bufsettings="noma nomod nowrap ro nobl"
 let g:netrw_dirhistmax=0
+nnoremap <C-e> <CMD>Lexplore<CR>
 
 set mouse=a
 
