@@ -315,5 +315,6 @@ lua <<EOF
 	vim.keymap.set('n', '<C-a>', vim.lsp.buf.hover)
 	vim.keymap.set('i', '<C-j>', vim.lsp.buf.signature_help)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+	vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition)
 EOF
 endif
