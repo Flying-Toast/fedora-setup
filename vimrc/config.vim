@@ -134,10 +134,6 @@ noremap <C-u> <C-i>
 
 noremap <Space> :
 
-" TODO Remove this reminder once muscle memory has adapted
-nnoremap <M-Left> <Cmd>echo "Use ctrl-o"<CR>
-nnoremap <M-Right> <Cmd>echo "Use ctrl-i"<CR>
-
 set path=**
 
 noremap Q <Nop>
