@@ -254,6 +254,9 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
 nnoremap <C-l> <Cmd>tabnew<CR><Cmd>CtrlP<CR>
 
+" fix for https://github.com/elixir-editors/vim-elixir/issues/562
+autocmd FileType heex set filetype=eelixir
+
 " Ctrl-p in insert mode pastes last yank unless completion popup is open
 inoremap <expr> <C-p> pumvisible() ? '<C-p>' : '<C-r>0'
 " Ctrl-k to put last delete/cut/etc into yank yegister
