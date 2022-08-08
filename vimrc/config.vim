@@ -257,11 +257,6 @@ nnoremap <C-l> <Cmd>tabnew<CR><Cmd>CtrlP<CR>
 " fix for https://github.com/elixir-editors/vim-elixir/issues/562
 autocmd FileType heex set filetype=eelixir
 
-" Ctrl-p in insert mode pastes last yank unless completion popup is open
-inoremap <expr> <C-p> pumvisible() ? '<C-p>' : '<C-r>0'
-" Ctrl-k to put last delete/cut/etc into yank yegister
-noremap <C-k> <Cmd>let @0=@"<Cr>
-
 if has("nvim")
 	set laststatus=3
 	autocmd TextYankPost * silent! lua vim.highlight.on_yank()
