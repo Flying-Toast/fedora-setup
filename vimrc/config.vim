@@ -264,6 +264,7 @@ noremap <C-k> <Cmd>let @0=@"<Cr>
 
 if has("nvim")
 	set laststatus=3
+	autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 
 lua <<EOF
 	require('nvim-lsp-installer').setup({
