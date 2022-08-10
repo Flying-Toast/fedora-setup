@@ -183,9 +183,9 @@ endfunc
 " Leader-t for popup term
 noremap <Leader>t <Cmd>call CreatePopupTerm()<CR>
 
-" ctrl-q to close current tab
-noremap <C-q> <Cmd>q<CR>
-" ctrl-q to open new tab
+" ctrl-q for bdelete
+noremap <C-q> <Cmd>bd<CR>
+" ctrl-t to open new tab
 noremap <C-t> <Cmd>tabnew<CR>
 
 let g:ctrlp_match_window = 'min:1,max:20'
