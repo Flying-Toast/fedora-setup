@@ -177,7 +177,7 @@ func CreatePopupTerm()
 	startinsert
 endfunc
 func OnPopupTermExit(job_id, code, event)
-	close
+	bd
 endfunc
 
 " Leader-t for popup term
