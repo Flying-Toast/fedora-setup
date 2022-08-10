@@ -32,17 +32,6 @@ if (has("termguicolors"))
 	set termguicolors
 endif
 
-" returns the tabnr of the project tab, or 0 if project mode is off
-func GetProjectTabNr()
-	for i in range(1, tabpagenr("$"))
-		if gettabvar(i, "is_project_tab") == 1
-			return i
-		endif
-	endfor
-
-	return 0
-endfunc
-
 let mapleader = ","
 
 syntax on
@@ -76,22 +65,6 @@ set laststatus=2
 set noshowmode
 let g:lightline = {'colorscheme': 'onedark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
-let g:lightline.tab = {'active': ['customtabname', 'modified'], 'inactive': ['customtabname', 'modified']}
-let g:lightline.tab_component_function = {'customtabname': 'CustomTabName', 'modified': 'CustomModified'}
-func CustomTabName(n)
-	if a:n == GetProjectTabNr()
-		return "@"
-	else
-		return g:lightline#tab#filename(a:n)
-	endif
-endfunc
-func CustomModified(n)
-	if a:n == GetProjectTabNr()
-		return ""
-	else
-		return g:lightline#tab#modified(a:n)
-	endif
-endfunc
 set showcmd
 
 " make backspace act normally
@@ -193,38 +166,6 @@ set nomodeline
 
 " Highlight quotes as part of the string in elixir
 hi def link elixirStringDelimiter String
-
-func StartProjectMode()
-	if GetProjectTabNr() != 0
-		echo "Project mode is already enabled"
-		return
-	endif
-
-	tabmove 0
-	call settabvar(1, "is_project_tab", 1)
-
-	terminal
-	call OnTerminalMode()
-
-	tabnext
-endfunc
-
-noremap <Leader>p <Cmd>call StartProjectMode()<CR>
-
-func OnCtrlSpace()
-	if GetProjectTabNr() == 0
-		return
-	endif
-
-	let l:lasttabnr = tabpagenr("#")
-
-	if GetProjectTabNr() == tabpagenr() && l:lasttabnr !=# 0
-		execute l:lasttabnr . "tabn"
-	else
-		execute GetProjectTabNr() . "tabn"
-	endif
-endfunc
-noremap <C-Space> <Cmd>call OnCtrlSpace()<CR>
 
 " open a terminal below the current buffer
 func CreatePopupTerm()
