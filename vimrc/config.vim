@@ -104,6 +104,8 @@ nnoremap <S-Tab> <Cmd>tabprevious<CR>
 " use Ctrl-u instead of Ctrl-i becauase Tab is the same scancode as Ctrl-i
 noremap <C-u> <C-i>
 
+nnoremap <C-w>t <C-w>T
+
 noremap <Space> :
 
 set path=**
