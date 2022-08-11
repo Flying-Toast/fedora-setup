@@ -172,7 +172,7 @@ hi def link elixirStringDelimiter String
 
 " open a terminal below the current buffer
 func CreatePopupTerm()
-	belowright 17split
+	bot 17split
 	enew
 	call termopen(&shell, {'on_exit': 'OnPopupTermExit'})
 	startinsert
