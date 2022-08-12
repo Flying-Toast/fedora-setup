@@ -141,6 +141,7 @@ nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
 let g:sneak#label = 1
+let g:sneak#target_labels = "qwertyuiopasdfgzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
 
 " Matching <> messes up delimitMate with less-than sign
 autocmd FileType rust setlocal matchpairs-=<:>
