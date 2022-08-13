@@ -21,98 +21,104 @@ endif
 call plug#end()
 
 if has("nvim")
+	set laststatus=3
 	set shada="NONE"
 else
+	set laststatus=2
 	set viminfo=
 endif
-
 set termguicolors
-
-let mapleader = ","
-
-syntax on
-colorscheme onedark
-
-" visible trailing whitespace
-autocmd VimEnter,WinEnter * match TrailingWhitespace /\s\+$/
-func ShowTrailingWhitespace()
-	highlight TrailingWhitespace gui=strikethrough,underline cterm=strikethrough,underline guifg=red ctermfg=red
-endfunc
-func HideTrailingWhitespace()
-	highlight clear TrailingWhitespace
-endfunc
-call ShowTrailingWhitespace()
-autocmd InsertEnter * call HideTrailingWhitespace()
-autocmd InsertLeave * call ShowTrailingWhitespace()
-
 set shiftwidth=8
 set tabstop=8
 set smartindent
 set noexpandtab
-
 set number
-set rnu
-
-set nowrap
-
-set laststatus=2
+set relativenumber
 set noshowmode
+set nomodeline
+set showcmd
+set nowrap
+set backspace=indent,eol,start
+set clipboard+=unnamedplus
+set shm+=I
+set path=**
+set mouse=a
+set completeopt=noinsert,menuone
+set formatoptions=
+set title
+set titlestring=%{%MakeTitleString()%}
+
+let mapleader = ","
+syntax on
+colorscheme onedark
+
 let g:lightline = {'colorscheme': 'onedark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
 let g:lightline.tab = {'active': ['filename', 'modified'], 'inactive': ['filename', 'modified']}
-set showcmd
-
-" make backspace act normally
-set backspace=indent,eol,start
-
-" use system clipboard
-set clipboard+=unnamedplus
-
-set shm+=I
-
-func CommandAbbrev(from, to)
-	execute 'cabbrev ' . a:from . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:to . '" : "' . a:from . '"<CR>'
-endfunc
-
-call CommandAbbrev("f", "find")
-call CommandAbbrev("tm", "tab Man")
-call CommandAbbrev("man", "Man")
-
-func OnTerminalMode()
-	setlocal nonumber norelativenumber
-endfunc
-autocmd TermOpen * call OnTerminalMode()
-
-" use <Esc> to exit terminal mode
-tnoremap <Esc> <C-\><C-n>
-
-" use <Esc> to clear search highlighting
-nnoremap <Esc> <Cmd>noh<CR>
-
-" use ctrl-s to save
-noremap <C-s> <Cmd>w<CR>
-inoremap <C-s> <Cmd>w<CR>
-
-" use [shift]-tab to cycle through tabs
-nnoremap <Tab> <Cmd>tabnext<CR>
-nnoremap <S-Tab> <Cmd>tabprevious<CR>
-" use Ctrl-u instead of Ctrl-i becauase Tab is the same scancode as Ctrl-i
-noremap <C-u> <C-i>
-
-nnoremap <C-w>t <C-w>T
-
-noremap <Space> :
-
-set path=**
-
-noremap Q <Nop>
 
 let g:netrw_liststyle=3
 let g:netrw_bufsettings="noma nomod nowrap ro nobl"
 let g:netrw_dirhistmax=0
-nnoremap <C-e> <CMD>Lexplore<CR>
 
-set mouse=a
+let g:sneak#label = 1
+let g:sneak#target_labels = "qwertyuiopasdfgzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
+
+let g:vim_search_pulse_mode = 'pattern'
+
+let g:svelte_preprocessor_tags = [{ 'name': 'ts', 'tag': 'script', 'as': 'typescript' }]
+let g:svelte_preprocessors = ['ts']
+
+let g:ctrlp_match_window = 'min:1,max:20'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_max_history = 0
+let g:ctrlp_mruf_max = 0
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
+
+func CommandAbbrev(from, to)
+	execute 'cabbrev ' . a:from . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:to . '" : "' . a:from . '"<CR>'
+endfunc
+call CommandAbbrev("f", "find")
+call CommandAbbrev("tm", "tab Man")
+call CommandAbbrev("man", "Man")
+
+" normal
+nnoremap <C-l> <Cmd>tabnew<CR><Cmd>CtrlP<CR>
+nnoremap <Tab> <Cmd>tabnext<CR>
+nnoremap <S-Tab> <Cmd>tabprevious<CR>
+nnoremap <Esc> <Cmd>noh<CR>
+nnoremap <C-w>t <C-w>T
+nnoremap <C-e> <CMD>Lexplore<CR>
+nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
+" insert
+inoremap <C-s> <Cmd>w<CR>
+" terminal
+tnoremap <Esc> <C-\><C-n>
+" operator
+omap s <Plug>Sneak_s
+omap S <Plug>Sneak_S
+" nvo
+noremap <Leader>t <Cmd>call CreatePopupTerm()<CR>
+noremap <C-q> <Cmd>bd<CR>
+noremap <C-t> <Cmd>tabnew<CR>
+" use Ctrl-u instead of Ctrl-i becauase Tab is the same scancode as Ctrl-i
+noremap <C-u> <C-i>
+noremap <C-s> <Cmd>w<CR>
+noremap <Space> :
+noremap Q <Nop>
+
+autocmd TermOpen * setlocal nonumber norelativenumber
+" fix for https://github.com/elixir-editors/vim-elixir/issues/562
+autocmd FileType heex set filetype=eelixir
+if has("nvim")
+	autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+endif
+
+" visible trailing whitespace
+autocmd VimEnter,WinEnter * match TrailingWhitespace /\s\+$/
+autocmd InsertEnter * highlight clear TrailingWhitespace
+autocmd VimEnter,WinEnter,InsertLeave * highlight TrailingWhitespace gui=strikethrough,underline cterm=strikethrough,underline guifg=red ctermfg=red
 
 func StripTrailingWhitespace()
 	let l:saved_view = winsaveview()
@@ -127,24 +133,7 @@ func StripTrailingWhitespace()
 	call winrestview(l:saved_view)
 	echo "Trimmed " . l:nsubbed . " line(s)"
 endfunc
-nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 
-omap s <Plug>Sneak_s
-omap S <Plug>Sneak_S
-let g:sneak#label = 1
-let g:sneak#target_labels = "qwertyuiopasdfgzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
-
-set completeopt=noinsert,menuone
-
-" Disable automatic comment insertion
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-let g:vim_search_pulse_mode = 'pattern'
-
-let g:svelte_preprocessor_tags = [{ 'name': 'ts', 'tag': 'script', 'as': 'typescript' }]
-let g:svelte_preprocessors = ['ts']
-
-set title
 func MakeTitleString()
 	if &ft == 'man'
 		return '%t'
@@ -152,9 +141,6 @@ func MakeTitleString()
 		return '%F'
 	endif
 endfunc
-set titlestring=%{%MakeTitleString()%}
-
-set nomodeline
 
 " Highlight quotes as part of the string in elixir
 hi def link elixirStringDelimiter String
@@ -170,30 +156,8 @@ func OnPopupTermExit(job_id, code, event)
 	bd
 endfunc
 
-" Leader-t for popup term
-noremap <Leader>t <Cmd>call CreatePopupTerm()<CR>
-
-" ctrl-q for bdelete
-noremap <C-q> <Cmd>bd<CR>
-" ctrl-t to open new tab
-noremap <C-t> <Cmd>tabnew<CR>
-
-let g:ctrlp_match_window = 'min:1,max:20'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_clear_cache_on_exit = 1
-let g:ctrlp_max_history = 0
-let g:ctrlp_mruf_max = 0
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
-nnoremap <C-l> <Cmd>tabnew<CR><Cmd>CtrlP<CR>
-
-" fix for https://github.com/elixir-editors/vim-elixir/issues/562
-autocmd FileType heex set filetype=eelixir
-
+" LSP
 if has("nvim")
-	set laststatus=3
-	autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-
 lua <<EOF
 	require('nvim-lsp-installer').setup({
 		automatic_installation = true
