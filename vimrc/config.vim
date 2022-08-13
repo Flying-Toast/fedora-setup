@@ -44,7 +44,6 @@ set shm+=I
 set path=**
 set mouse=a
 set completeopt=noinsert,menuone
-set formatoptions=
 set title
 set titlestring=%{%MakeTitleString()%}
 
@@ -107,6 +106,7 @@ noremap <Space> :
 noremap Q <Nop>
 
 autocmd TermOpen * setlocal nonumber norelativenumber
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " fix for https://github.com/elixir-editors/vim-elixir/issues/562
 autocmd FileType heex set filetype=eelixir
 if has("nvim")
