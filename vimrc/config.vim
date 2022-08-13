@@ -27,9 +27,7 @@ else
 	set viminfo=
 endif
 
-if (has("termguicolors"))
-	set termguicolors
-endif
+set termguicolors
 
 let mapleader = ","
 
