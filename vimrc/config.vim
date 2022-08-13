@@ -92,7 +92,6 @@ nnoremap <C-w>t <C-w>T
 nnoremap <C-e> <CMD>Lexplore<CR>
 nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 " insert
-inoremap <C-s> <Cmd>w<CR>
 " terminal
 tnoremap <Esc> <C-\><C-n>
 " operator
@@ -104,7 +103,6 @@ noremap <C-q> <Cmd>bd<CR>
 noremap <C-t> <Cmd>tabnew<CR>
 " use Ctrl-u instead of Ctrl-i becauase Tab is the same scancode as Ctrl-i
 noremap <C-u> <C-i>
-noremap <C-s> <Cmd>w<CR>
 noremap <Space> :
 noremap Q <Nop>
 
