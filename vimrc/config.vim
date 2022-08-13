@@ -9,7 +9,6 @@ Plug 'inside/vim-search-pulse'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'cespare/vim-toml'
 Plug 'evanleck/vim-svelte'
-Plug 'neovimhaskell/haskell-vim'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'gregsexton/MatchTag'
@@ -48,10 +47,8 @@ autocmd InsertLeave * call ShowTrailingWhitespace()
 
 set shiftwidth=8
 set tabstop=8
-autocmd FileType haskell setlocal expandtab shiftwidth=4 tabstop=4
 set smartindent
 set noexpandtab
-let g:haskell_indent_disable=1
 
 set number
 set rnu
