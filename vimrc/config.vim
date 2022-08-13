@@ -1,7 +1,6 @@
 call plug#begin()
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'Raimondi/delimitMate'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'justinmk/vim-sneak'
@@ -120,9 +119,6 @@ nnoremap <C-e> <CMD>Lexplore<CR>
 
 set mouse=a
 
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
-
 func StripTrailingWhitespace()
 	let l:saved_view = winsaveview()
 	redir => l:matches
@@ -142,9 +138,6 @@ omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
 let g:sneak#label = 1
 let g:sneak#target_labels = "qwertyuiopasdfgzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
-
-" Matching <> messes up delimitMate with less-than sign
-autocmd FileType rust setlocal matchpairs-=<:>
 
 set completeopt=noinsert,menuone
 
