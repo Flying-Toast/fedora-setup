@@ -1,6 +1,7 @@
 call plug#begin()
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'Raimondi/delimitMate'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'justinmk/vim-sneak'
@@ -75,6 +76,11 @@ let g:ctrlp_mruf_max = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
 
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_nesting_quotes = ['"', "'", "`"]
+let g:delimitMate_balance_matchpairs = 1
+
 func CommandAbbrev(from, to)
 	execute 'cabbrev ' . a:from . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:to . '" : "' . a:from . '"<CR>'
 endfunc
@@ -109,6 +115,7 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " fix for https://github.com/elixir-editors/vim-elixir/issues/562
 autocmd FileType heex set filetype=eelixir
+autocmd FileType rust setlocal matchpairs-=<:>
 if has("nvim")
 	autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 endif
