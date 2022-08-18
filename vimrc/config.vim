@@ -90,8 +90,8 @@ call CommandAbbrev("man", "Man")
 
 " normal
 nnoremap <C-l> <Cmd>tabnew<CR><Cmd>CtrlP<CR>
-nnoremap <Tab> <Cmd>tabnext<CR>
-nnoremap <S-Tab> <Cmd>tabprevious<CR>
+nnoremap <C-k> <Cmd>tabnext<CR>
+nnoremap <C-j> <Cmd>tabprevious<CR>
 nnoremap <Esc> <Cmd>noh<CR>
 nnoremap <C-w>t <C-w>T
 nnoremap <C-e> <CMD>Lexplore<CR>
@@ -104,10 +104,7 @@ omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
 " nvo
 noremap <Leader>t <Cmd>call CreatePopupTerm()<CR>
-noremap <C-q> <Cmd>bd<CR>
 noremap <C-t> <Cmd>tabnew<CR>
-" use Ctrl-u instead of Ctrl-i becauase Tab is the same scancode as Ctrl-i
-noremap <C-u> <C-i>
 noremap <Space> :
 noremap Q <Nop>
 
