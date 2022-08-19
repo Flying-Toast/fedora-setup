@@ -1,6 +1,9 @@
 [[ $- != *i* ]] && return
 
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
+
 source /usr/share/bash-completion/bash_completion
+[[ -f $HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo ]] && source $HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo
 
 eval $(dircolors)
 
@@ -12,7 +15,6 @@ export PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]
 export github="git@github.com:Flying-Toast"
 export EDITOR="vim"
 export MANPAGER="vim +Man!"
-export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
 export LESSHISTFILE="-"
 
 shopt -s histappend
