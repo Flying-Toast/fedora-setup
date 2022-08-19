@@ -28,8 +28,8 @@ else
 	set viminfo=
 endif
 set termguicolors
-set shiftwidth=8
 set tabstop=8
+set shiftwidth=8
 set smartindent
 set noexpandtab
 set number
@@ -112,6 +112,8 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " fix for https://github.com/elixir-editors/vim-elixir/issues/562
 autocmd FileType heex set filetype=eelixir
 autocmd FileType rust setlocal matchpairs-=<:>
+autocmd FileType ocaml setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType ocaml let b:delimitMate_quotes = '"'
 if has("nvim")
 	autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 endif
@@ -182,6 +184,7 @@ lua <<EOF
 		on_attach=on_attach,
 		cmd = { "language_server.sh" },
 	})
+	lspconfig.ocamllsp.setup({ on_attach=on_attach })
 
 	vim.keymap.set('n', '<C-a>', vim.lsp.buf.hover)
 	vim.keymap.set('i', '<C-j>', vim.lsp.buf.signature_help)

@@ -18,6 +18,16 @@ touch ~/Templates/empty
 mv ~/.bashrc ./bashrc.old
 cp ./bashrc ~/.bashrc
 
+mv ~/.utoprc ./utoprc.old
+cp ./utoprc ~/.utoprc
+
+mkdir ~/.config/utop
+mv ~/.config/utop/init.ml ./init.ml.old
+cp init.ml ~/.config/utop/
+
+mv ~/.config/.lambda-term-inputrc ./lambda-term-inputrc.old
+cp ./lambda-term-inputrc ~/.config/.lambda-term-inputrc
+
 mkdir -p ~/.local/bin
 mv ~/.local/bin ./localbin_OLD
 cp -r ./localbin ~/.local/bin
