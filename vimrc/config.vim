@@ -168,7 +168,9 @@ func FormatCurentBuffer()
 	if &ft == "rust"
 		RustFmt
 	elseif &ft == "ocaml"
-		echo "TODO: Format ocaml with ocamlformat"
+		let l:expanded = expand("%:t")
+		let l:filename = l:expanded == "" ? "vimocamlfmttmp.ml" : l:expanded
+		exec "%!ocamlformat --enable-outside-detected-project - --name=" . l:filename
 	else
 		echo "No formatter configued for filetype='" . &ft . "'"
 	endif
