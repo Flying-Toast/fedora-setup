@@ -14,11 +14,11 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'gregsexton/MatchTag'
 Plug 'elixir-editors/vim-elixir'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ocaml/vim-ocaml'
 if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 call plug#end()
 
@@ -206,5 +206,11 @@ lua <<EOF
 	vim.keymap.set('i', '<C-j>', vim.lsp.buf.signature_help)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition)
+
+	-- treesitter
+	require'nvim-treesitter.configs'.setup({
+		ensure_intalled = { "ocaml" },
+		highlight = { enable = true },
+	})
 EOF
 endif
