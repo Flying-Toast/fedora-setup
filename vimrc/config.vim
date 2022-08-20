@@ -94,7 +94,10 @@ nnoremap <C-j> <Cmd>tabprevious<CR>
 nnoremap <Esc> <Cmd>noh<CR>
 nnoremap <C-w>t <C-w>T
 nnoremap <C-e> <CMD>Lexplore<CR>
+nnoremap <C-t> <Cmd>tabnew<CR>
+nnoremap <Leader>t <Cmd>call CreatePopupTerm()<CR>
 nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
+nnoremap <Leader>f <Cmd>call FormatCurentBuffer()<CR>
 " insert
 " terminal
 tnoremap <Esc> <C-\><C-n>
@@ -102,8 +105,6 @@ tnoremap <Esc> <C-\><C-n>
 omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
 " nvo
-noremap <Leader>t <Cmd>call CreatePopupTerm()<CR>
-noremap <C-t> <Cmd>tabnew<CR>
 noremap <Space> :
 noremap Q <Nop>
 
@@ -157,6 +158,16 @@ func CreatePopupTerm()
 endfunc
 func OnPopupTermExit(job_id, code, event)
 	bd
+endfunc
+
+func FormatCurentBuffer()
+	if &ft == "rust"
+		RustFmt
+	elseif &ft == "ocaml"
+		echo "TODO: Format ocaml with ocamlformat"
+	else
+		echo "No formatter configued for filetype='" . &ft . "'"
+	endif
 endfunc
 
 " LSP
