@@ -13,10 +13,7 @@
 + inotify-tools (for phoenix live reload)
 
 == ocaml stuff ==
-+ ocaml
 + opam
-+ ocaml-dune
-+ utop
 
 == from rpmfusion-free ==
 + vlc

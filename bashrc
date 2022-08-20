@@ -4,6 +4,7 @@ export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
 
 source /usr/share/bash-completion/bash_completion
 [[ -f $HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo ]] && source $HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo
+[[ -f $HOME/.opam/opam-init/init.sh ]] && source $HOME/.opam/opam-init/init.sh
 
 eval $(dircolors)
 
