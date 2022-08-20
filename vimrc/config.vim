@@ -82,8 +82,6 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_nesting_quotes = ['"', "'", "`"]
 let g:delimitMate_balance_matchpairs = 1
 
-let g:ocaml_highlight_operators = 1
-
 func CommandAbbrev(from, to)
 	execute 'cabbrev ' . a:from . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:to . '" : "' . a:from . '"<CR>'
 endfunc
