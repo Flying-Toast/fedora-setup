@@ -126,6 +126,9 @@ autocmd VimEnter,WinEnter * match TrailingWhitespace /\s\+$/
 autocmd InsertEnter * highlight clear TrailingWhitespace
 autocmd VimEnter,WinEnter,InsertLeave * highlight TrailingWhitespace gui=strikethrough,underline cterm=strikethrough,underline guifg=red ctermfg=red
 
+" Highlight quotes as part of the string in elixir
+hi def link elixirStringDelimiter String
+
 func StripTrailingWhitespace()
 	let l:saved_view = winsaveview()
 	redir => l:matches
@@ -147,9 +150,6 @@ func MakeTitleString()
 		return '%F'
 	endif
 endfunc
-
-" Highlight quotes as part of the string in elixir
-hi def link elixirStringDelimiter String
 
 " open a terminal below the current buffer
 func CreatePopupTerm()
