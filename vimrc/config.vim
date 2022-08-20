@@ -3,13 +3,9 @@ Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'KabbAmine/vCoolor.vim'
-Plug 'pangloss/vim-javascript'
 Plug 'justinmk/vim-sneak'
 Plug 'rust-lang/rust.vim'
 Plug 'inside/vim-search-pulse'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'cespare/vim-toml'
-Plug 'evanleck/vim-svelte'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'gregsexton/MatchTag'
 Plug 'elixir-editors/vim-elixir'
@@ -65,9 +61,6 @@ let g:sneak#label = 1
 let g:sneak#target_labels = "qwertyuiopasdfgzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
 
 let g:vim_search_pulse_mode = 'pattern'
-
-let g:svelte_preprocessor_tags = [{ 'name': 'ts', 'tag': 'script', 'as': 'typescript' }]
-let g:svelte_preprocessors = ['ts']
 
 let g:ctrlp_match_window = 'min:1,max:20'
 let g:ctrlp_show_hidden = 1
@@ -174,7 +167,6 @@ func FormatCurentBuffer()
 	endif
 endfunc
 
-" LSP
 if has("nvim")
 lua <<EOF
 	require('mason').setup()
@@ -210,7 +202,11 @@ lua <<EOF
 	-- treesitter
 	require'nvim-treesitter.configs'.setup({
 		ensure_intalled = { "ocaml" },
-		highlight = { enable = true },
+		auto_install = true,
+		highlight = {
+			enable = true,
+			disable = { "vim" },
+		},
 	})
 EOF
 endif
