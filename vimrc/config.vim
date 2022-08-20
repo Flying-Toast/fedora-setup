@@ -15,8 +15,9 @@ Plug 'gregsexton/MatchTag'
 Plug 'elixir-editors/vim-elixir'
 Plug 'ctrlpvim/ctrlp.vim'
 if has("nvim")
+	Plug 'williamboman/mason.nvim'
+	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'williamboman/nvim-lsp-installer'
 endif
 call plug#end()
 
@@ -173,8 +174,9 @@ endfunc
 " LSP
 if has("nvim")
 lua <<EOF
-	require('nvim-lsp-installer').setup({
-		automatic_installation = true
+	require('mason').setup()
+	require('mason-lspconfig').setup({
+		automatic_installation = true,
 	})
 	local lspconfig = require('lspconfig')
 

@@ -5,7 +5,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-mod
 rm ~/.cargo/env
 
 opam init -n
-opam install -y utop dune
+opam install -y utop dune ocamlformat
 
 mkdir ~/workspace
 
