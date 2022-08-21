@@ -181,6 +181,8 @@ func DoRunner()
 		call PopupTerm("ocaml " . l:filename, {})
 	elseif &ft == "python"
 		call PopupTerm("python " . l:filename, {})
+	elseif &ft == "perl"
+		call PopupTerm("perl " . l:filename, {})
 	else
 		echo "No runner configued for filetype='" . &ft . "'"
 	endif
