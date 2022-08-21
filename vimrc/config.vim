@@ -92,7 +92,7 @@ nnoremap <C-e> <CMD>Lexplore<CR>
 nnoremap <C-t> <Cmd>tabnew<CR>
 nnoremap <Leader>t <Cmd>call CreatePopupTerm()<CR>
 nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
-nnoremap <Leader>f <Cmd>call FormatCurentBuffer()<CR>
+nnoremap <Leader>f <Cmd>call FormatCurrentBuffer()<CR>
 " insert
 " terminal
 tnoremap <Esc> <C-\><C-n>
@@ -155,7 +155,7 @@ func OnPopupTermExit(job_id, code, event)
 	bd
 endfunc
 
-func FormatCurentBuffer()
+func FormatCurrentBuffer()
 	if &ft == "rust"
 		RustFmt
 	elseif &ft == "ocaml"
