@@ -178,6 +178,8 @@ func DoRunner()
 		call PopupTerm("cargo run || (rustc " . l:filename . " -o " . l:exename . " && " . l:exename . ")", {})
 	elseif &ft == "ocaml"
 		call PopupTerm("ocaml " . l:filename, {})
+	elseif &ft == "python"
+		call PopupTerm("python " . l:filename, {})
 	else
 		echo "No runner configued for filetype='" . &ft . "'"
 	endif
