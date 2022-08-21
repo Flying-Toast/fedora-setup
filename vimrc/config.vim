@@ -170,18 +170,21 @@ endfunc
 func DoRunner()
 	let l:filename = tempname()
 	call writefile(getline(1, '$'), l:filename)
+	let l:Cleanup = {job_id, code, event -> delete(l:filename)}
+	let l:termopts = { 'on_exit': l:Cleanup }
 
 	if &ft == "rust"
 		let l:exename = tempname()
-		call PopupTerm("cargo run || (rustc " . l:filename . " -o " . l:exename . " && " . l:exename . ")", {})
+		call PopupTerm("cargo run || (rustc " . l:filename . " -o " . l:exename . " && " . l:exename . ")", l:termopts)
 	elseif &ft == "ocaml"
-		call PopupTerm("ocaml " . l:filename, {})
+		call PopupTerm("ocaml " . l:filename, l:termopts)
 	elseif &ft == "python"
-		call PopupTerm("python " . l:filename, {})
+		call PopupTerm("python " . l:filename, l:termopts)
 	elseif &ft == "perl"
-		call PopupTerm("perl " . l:filename, {})
+		call PopupTerm("perl " . l:filename, l:termopts)
 	else
 		echo "No runner configued for filetype='" . &ft . "'"
+		call l:Cleanup(0, 0, 0)
 	endif
 endfunc
 
