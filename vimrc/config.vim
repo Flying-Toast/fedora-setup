@@ -223,7 +223,7 @@ lua <<EOF
 		auto_install = true,
 		highlight = {
 			enable = true,
-			disable = { "vim", "elixir" },
+			disable = { "vim", "elixir", "help" },
 		},
 	})
 
