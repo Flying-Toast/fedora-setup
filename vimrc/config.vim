@@ -105,6 +105,7 @@ noremap <Space> :
 noremap Q <Nop>
 
 autocmd TermOpen * setlocal nonumber norelativenumber
+autocmd TermOpen * syntax match TermExitMsg /^\[Process exited [0-9]\+\]$/
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " fix for https://github.com/elixir-editors/vim-elixir/issues/562
 autocmd FileType heex set filetype=eelixir
@@ -120,8 +121,8 @@ autocmd VimEnter,WinEnter * match TrailingWhitespace /\s\+$/
 autocmd InsertEnter * highlight clear TrailingWhitespace
 autocmd VimEnter,WinEnter,InsertLeave * highlight TrailingWhitespace gui=strikethrough,underline cterm=strikethrough,underline guifg=red ctermfg=red
 
-" Highlight quotes as part of the string in elixir
 hi def link elixirStringDelimiter String
+hi link TermExitMsg Special
 
 func StripTrailingWhitespace()
 	let l:saved_view = winsaveview()
