@@ -93,6 +93,7 @@ nnoremap <C-t> <Cmd>tabnew<CR>
 nnoremap <Leader>t <Cmd>call PopupTerm()<CR>
 nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 nnoremap <Leader>f <Cmd>call FormatCurrentBuffer()<CR>
+nnoremap <Leader>r <Cmd>call DoRunner()<CR>
 " insert
 " terminal
 tnoremap <Esc> <C-\><C-n>
@@ -165,6 +166,20 @@ func FormatCurrentBuffer()
 		exec "%!ocamlformat --enable-outside-detected-project - --name=" . l:filename
 	else
 		echo "No formatter configued for filetype='" . &ft . "'"
+	endif
+endfunc
+
+func DoRunner()
+	let l:filename = tempname()
+	call writefile(getline(1, '$'), l:filename)
+
+	if &ft == "rust"
+		let l:exename = tempname()
+		call PopupTerm("cargo run || (rustc " . l:filename . " -o " . l:exename . " && " . l:exename . ")", {})
+	elseif &ft == "ocaml"
+		call PopupTerm("ocaml " . l:filename, {})
+	else
+		echo "No runner configued for filetype='" . &ft . "'"
 	endif
 endfunc
 
