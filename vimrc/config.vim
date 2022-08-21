@@ -90,7 +90,7 @@ nnoremap <Esc> <Cmd>noh<CR>
 nnoremap <C-w>t <C-w>T
 nnoremap <C-e> <CMD>Lexplore<CR>
 nnoremap <C-t> <Cmd>tabnew<CR>
-nnoremap <Leader>t <Cmd>call CreatePopupTerm()<CR>
+nnoremap <Leader>t <Cmd>call PopupTerm()<CR>
 nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 nnoremap <Leader>f <Cmd>call FormatCurrentBuffer()<CR>
 " insert
@@ -144,11 +144,12 @@ func MakeTitleString()
 	endif
 endfunc
 
-" open a terminal below the current buffer
-func CreatePopupTerm()
+func PopupTerm(...)
+	let l:cmd = a:0 >= 1 ? a:1 : &shell
+	let l:opts = a:0 >= 2 ? a:2 : {'on_exit': 'OnPopupTermExit'}
 	bot 17split
 	enew
-	call termopen(&shell, {'on_exit': 'OnPopupTermExit'})
+	call termopen(l:cmd, l:opts)
 	startinsert
 endfunc
 func OnPopupTermExit(job_id, code, event)
