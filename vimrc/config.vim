@@ -5,6 +5,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'rust-lang/rust.vim'
+Plug 'neovimhaskell/haskell-vim'
 Plug 'inside/vim-search-pulse'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'gregsexton/MatchTag'
@@ -75,6 +76,8 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_nesting_quotes = ['"', "'", "`"]
 let g:delimitMate_balance_matchpairs = 1
 
+let g:haskell_indent_disable=1
+
 command -nargs=1 -complete=filetype Ft set ft=<args>
 
 func CommandAbbrev(from, to)
@@ -113,6 +116,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " fix for https://github.com/elixir-editors/vim-elixir/issues/562
 autocmd FileType heex set filetype=eelixir
 autocmd FileType rust setlocal matchpairs-=<:>
+autocmd FileType haskell setlocal expandtab shiftwidth=4 tabstop=4
 autocmd FileType ocaml setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType ocaml let b:delimitMate_quotes = '"'
 if has("nvim")
@@ -229,7 +233,8 @@ lua <<EOF
 		auto_install = true,
 		highlight = {
 			enable = true,
-			disable = { "vim", "elixir", "help" },
+			-- TODO: rmeove haskell and elixir once their treesitter impls aren't slow AF
+			disable = { "vim", "elixir", "help", "haskell" },
 		},
 	})
 
