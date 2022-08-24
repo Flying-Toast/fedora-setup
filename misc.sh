@@ -24,9 +24,6 @@ cp ./bashrc ~/.bashrc
 mv ~/.utoprc ./utoprc.old
 cp ./utoprc ~/.utoprc
 
-mv ~/.config/ocamlformat ./ocamlformat.old
-cp ocamlformat ~/.config/
-
 mkdir ~/.config/utop
 mv ~/.config/utop/init.ml ./init.ml.old
 cp init.ml ~/.config/utop/
