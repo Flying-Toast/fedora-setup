@@ -11,6 +11,7 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'gregsexton/MatchTag'
 Plug 'elixir-editors/vim-elixir'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'alvan/vim-closetag'
 if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
@@ -115,7 +116,8 @@ autocmd TermOpen * syntax match TermExitMsg /^\[Process exited [0-9]\+\]$/
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " fix for https://github.com/elixir-editors/vim-elixir/issues/562
 autocmd FileType heex set filetype=eelixir
-autocmd FileType rust setlocal matchpairs-=<:>
+autocmd FileType html inoremap <buffer> <expr> <CR> getline('.')[col('.')-2] == '>' ? '<CR><C-o>O<C-t>' : '<CR>'
+autocmd FileType rust,html setlocal matchpairs-=<:>
 autocmd FileType haskell setlocal expandtab shiftwidth=4 tabstop=4
 autocmd FileType ocaml setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType ocaml let b:delimitMate_quotes = '"'
