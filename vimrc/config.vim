@@ -70,7 +70,7 @@ let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_max_history = 0
 let g:ctrlp_mruf_max = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs']
+let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs', 'dune-project']
 
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
