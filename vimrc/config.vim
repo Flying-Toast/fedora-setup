@@ -213,6 +213,9 @@ func DoRunner()
 			let l:termopts.cwd = fnamemodify(l:projfile, ":p:h")
 			call PopupTerm("mix phx.server || mix run", l:termopts)
 		endif
+	elseif &ft == "c"
+		let l:exename = tempname()
+		call PopupTerm("gcc -x c " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
 	else
 		echo "No runner configued for filetype='" . &ft . "'"
 		call l:Cleanup(0, 0, 0)
