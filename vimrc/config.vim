@@ -176,6 +176,10 @@ func FormatCurrentBuffer()
 	endif
 endfunc
 
+func ParentDirContainingFile(filename)
+	return findfile(a:filename, ".;")
+endfunc
+
 func DoRunner()
 	let l:filename = tempname()
 	call writefile(getline(1, '$'), l:filename)
@@ -183,10 +187,20 @@ func DoRunner()
 	let l:termopts = { 'on_exit': l:Cleanup }
 
 	if &ft == "rust"
-		let l:exename = tempname()
-		call PopupTerm("cargo run || (rustc " . l:filename . " -o " . l:exename . " && " . l:exename . ")", l:termopts)
+		if ParentDirContainingFile("Cargo.toml") == ""
+			let l:exename = tempname()
+			call PopupTerm("rustc " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
+		else
+			call PopupTerm("cargo run", l:termopts)
+		endif
 	elseif &ft == "ocaml"
-		call PopupTerm("ocaml " . l:filename, l:termopts)
+		let l:projfile = ParentDirContainingFile("dune-project")
+		if l:projfile == ""
+			call PopupTerm("ocaml " . l:filename, l:termopts)
+		else
+			let l:termopts.cwd = fnamemodify(l:projfile, ":p:h")
+			call PopupTerm("dune exec " . "bin/main.exe", l:termopts)
+		endif
 	elseif &ft == "python"
 		call PopupTerm("python " . l:filename, l:termopts)
 	elseif &ft == "perl"
