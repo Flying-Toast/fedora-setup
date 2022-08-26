@@ -7,6 +7,7 @@
 + ImageMagick
 + nmap
 + g++ (needed to compile nvim treesitter things)
++ gdb
 
 == elixir development stuff ==
 + elixir
@@ -34,3 +35,4 @@
 - gnome-tour
 - mediawriter
 - gedit
+- anaconda-install-env-deps
