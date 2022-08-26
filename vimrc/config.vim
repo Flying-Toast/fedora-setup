@@ -199,12 +199,20 @@ func DoRunner()
 			call PopupTerm("ocaml " . l:filename, l:termopts)
 		else
 			let l:termopts.cwd = fnamemodify(l:projfile, ":p:h")
-			call PopupTerm("dune exec " . "bin/main.exe", l:termopts)
+			call PopupTerm("dune exec bin/main.exe", l:termopts)
 		endif
 	elseif &ft == "python"
 		call PopupTerm("python " . l:filename, l:termopts)
 	elseif &ft == "perl"
 		call PopupTerm("perl " . l:filename, l:termopts)
+	elseif &ft == "elixir"
+		let l:projfile = ParentDirContainingFile("mix.exs")
+		if l:projfile == ""
+			call PopupTerm("elixir " . l:filename, l:termopts)
+		else
+			let l:termopts.cwd = fnamemodify(l:projfile, ":p:h")
+			call PopupTerm("mix phx.server || mix run", l:termopts)
+		endif
 	else
 		echo "No runner configued for filetype='" . &ft . "'"
 		call l:Cleanup(0, 0, 0)
