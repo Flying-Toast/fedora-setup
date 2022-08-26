@@ -1,0 +1,10 @@
+{
+  "name": "Hide Accessibility Menu",
+  "description": "Hides the accessibility menu from the top bar",
+  "uuid": "hide_a11y@example.com",
+  "version": 1,
+  "url": "https://example.com",
+  "shell-version": [
+    "42"
+  ]
+}

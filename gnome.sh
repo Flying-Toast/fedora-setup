@@ -1,10 +1,14 @@
 #!/bin/bash
 
-# fullscreen notifications extension
+# gnome extensions:
+ENABLED_EXTENSIONS="'launch-new-instance@gnome-shell-extensions.gcampax.github.com'" # comma separated
 mkdir -p ~/.local/share/gnome-shell/extensions
-CLONE_DIR=$(mktemp -d)
-git clone https://github.com/soal/gnome-shell-extension-fullscreen-notifications $CLONE_DIR
-mv $CLONE_DIR/fullscreen-notifications@sorrow.about.alice.pm.me ~/.local/share/gnome-shell/extensions/
+for EXTENSION in $(ls ./gnome-extensions/)
+do
+	cp -r ./gnome-extensions/$EXTENSION ~/.local/share/gnome-shell/extensions/
+	ENABLED_EXTENSIONS="$ENABLED_EXTENSIONS,'$EXTENSION'"
+done
+dconf write /org/gnome/shell/enabled-extensions "[$ENABLED_EXTENSIONS]"
 
 # wallpaper
 cp wallpaper/wallpaper.png ~/Pictures
@@ -25,7 +29,6 @@ dconf write $TERM_BASE/background-color "'#282C34'"
 dconf write $TERM_BASE/palette "['rgb(92,99,112)', 'rgb(224,108,117)', 'rgb(152,195,121)', 'rgb(209,154,102)', 'rgb(97,175,239)', 'rgb(198,120,221)', 'rgb(86,182,194)', 'rgb(171,178,191)', 'rgb(92,99,112)', 'rgb(224,108,117)', 'rgb(152,195,121)', 'rgb(209,154,102)', 'rgb(97,175,239)', 'rgb(198,120,221)', 'rgb(86,182,194)', 'rgb(171,178,191)']"
 
 # tweaks
-dconf write /org/gnome/shell/enabled-extensions "['launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'fullscreen-notifications@sorrow.about.alice.pm.me']"
 dconf write /org/gnome/desktop/input-sources/xkb-options "['lv3:ralt_switch', 'caps:escape']"
 dconf write /org/gnome/desktop/interface/enable-hot-corners false
 dconf write /org/gnome/desktop/peripherals/touchpad/click-method "'areas'"
