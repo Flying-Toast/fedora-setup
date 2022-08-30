@@ -205,6 +205,8 @@ func DoRunner()
 		call PopupTerm("python " . l:filename, l:termopts)
 	elseif &ft == "perl"
 		call PopupTerm("perl " . l:filename, l:termopts)
+	elseif &ft == "haskell"
+		call PopupTerm("runhaskell " . l:filename, l:termopts)
 	elseif &ft == "elixir"
 		let l:projfile = ParentDirContainingFile("mix.exs")
 		if l:projfile == ""

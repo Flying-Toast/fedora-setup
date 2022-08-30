@@ -8,14 +8,13 @@
 + nmap
 + g++ (needed to compile nvim treesitter things)
 + gdb
++ opam
++ ghc
 
 == elixir development stuff ==
 + elixir
 + erlang
 + inotify-tools (for phoenix live reload)
-
-== ocaml stuff ==
-+ opam
 
 == from rpmfusion-free ==
 + vlc
