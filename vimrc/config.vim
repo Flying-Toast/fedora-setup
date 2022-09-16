@@ -160,7 +160,8 @@ func PopupTerm(...)
 	let l:opts = a:0 >= 2 ? a:2 : {'on_exit': {job_id, code, event -> execute('bd')}}
 	bot 17split
 	enew
-	call termopen(l:cmd, l:opts)
+	" GRRRRRRRRRRRRR
+	call termopen(l:cmd . " && sleep 0.02", l:opts)
 	startinsert
 endfunc
 
