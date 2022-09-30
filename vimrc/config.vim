@@ -166,6 +166,7 @@ func PopupTerm(...)
 endfunc
 
 func FormatCurrentBuffer()
+	let l:saved_view = winsaveview()
 	if &ft == "rust"
 		%!rustfmt
 	elseif &ft == "ocaml"
@@ -174,7 +175,9 @@ func FormatCurrentBuffer()
 		exec "%!ocamlformat --enable-outside-detected-project - --name=" . l:filename
 	else
 		echo "No formatter configued for filetype='" . &ft . "'"
+		return
 	endif
+	call winrestview(l:saved_view)
 endfunc
 
 func ParentDirContainingFile(filename)
