@@ -219,6 +219,8 @@ func DoRunner()
 	elseif &ft == "c"
 		let l:exename = tempname()
 		call PopupTerm("gcc -x c " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
+	elseif &ft == "prolog"
+		call PopupTerm("swipl " . l:filename, l:termopts)
 	else
 		echo "No runner configued for filetype='" . &ft . "'"
 		call l:Cleanup(0, 0, 0)
