@@ -180,7 +180,7 @@ func FormatCurrentBuffer()
 	call winrestview(l:saved_view)
 endfunc
 
-func ParentDirContainingFile(filename)
+func FileInCwdOrAbove(filename)
 	return findfile(a:filename, ".;")
 endfunc
 
@@ -191,14 +191,14 @@ func DoRunner()
 	let l:termopts = { 'on_exit': l:Cleanup }
 
 	if &ft == "rust"
-		if ParentDirContainingFile("Cargo.toml") == ""
+		if FileInCwdOrAbove("Cargo.toml") == ""
 			let l:exename = tempname()
 			call PopupTerm("rustc " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
 		else
 			call PopupTerm("cargo run", l:termopts)
 		endif
 	elseif &ft == "ocaml"
-		let l:projfile = ParentDirContainingFile("dune-project")
+		let l:projfile = FileInCwdOrAbove("dune-project")
 		if l:projfile == ""
 			call PopupTerm("ocaml " . l:filename, l:termopts)
 		else
@@ -212,12 +212,17 @@ func DoRunner()
 	elseif &ft == "haskell"
 		call PopupTerm("runhaskell " . l:filename, l:termopts)
 	elseif &ft == "elixir"
-		let l:projfile = ParentDirContainingFile("mix.exs")
+		let l:projfile = FileInCwdOrAbove("mix.exs")
 		if l:projfile == ""
 			call PopupTerm("elixir " . l:filename, l:termopts)
 		else
-			let l:termopts.cwd = fnamemodify(l:projfile, ":p:h")
-			call PopupTerm("mix phx.server || mix run", l:termopts)
+			let l:dir_containing_mixfile = fnamemodify(l:projfile, ":p:h")
+			let l:termopts.cwd = l:dir_containing_mixfile
+			if isdirectory(l:dir_containing_mixfile . "/deps/phoenix")
+				call PopupTerm("mix phx.server", l:termopts)
+			else
+				call PopupTerm("mix run", l:termopts)
+			endif
 		endif
 	elseif &ft == "c"
 		let l:exename = tempname()
