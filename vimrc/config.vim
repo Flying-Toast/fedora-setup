@@ -12,6 +12,7 @@ Plug 'gregsexton/MatchTag'
 Plug 'elixir-editors/vim-elixir'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'alvan/vim-closetag'
+Plug 'preservim/nerdtree'
 if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
@@ -55,10 +56,6 @@ let g:lightline = {'colorscheme': 'onedark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
 let g:lightline.tab = {'active': ['filename', 'modified'], 'inactive': ['filename', 'modified']}
 
-let g:netrw_liststyle=3
-let g:netrw_bufsettings="noma nomod nowrap ro nobl"
-let g:netrw_dirhistmax=0
-
 let g:sneak#label = 1
 let g:sneak#target_labels = "qwertyuiopasdfgzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
 
@@ -71,6 +68,13 @@ let g:ctrlp_max_history = 0
 let g:ctrlp_mruf_max = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs', 'dune-project']
+
+let NERDTreeBookmarksFile="/dev/null"
+let NERDTreeCascadeSingleChildDir=0
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+let NERDTreeShowLineNumbers=1
+autocmd FileType nerdtree setlocal rnu
 
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
@@ -101,6 +105,7 @@ nnoremap <Leader>t <Cmd>call PopupTerm()<CR>
 nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 nnoremap <Leader>f <Cmd>call FormatCurrentBuffer()<CR>
 nnoremap <Leader>r <Cmd>call DoRunner()<CR>
+nnoremap <C-e> <CMD>NERDTreeToggle<CR>
 " insert
 " terminal
 tnoremap <Esc> <C-\><C-n>
