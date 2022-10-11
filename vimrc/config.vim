@@ -6,7 +6,6 @@ Plug 'KabbAmine/vCoolor.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'rust-lang/rust.vim'
 Plug 'neovimhaskell/haskell-vim'
-Plug 'inside/vim-search-pulse'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'gregsexton/MatchTag'
 Plug 'elixir-editors/vim-elixir'
@@ -24,6 +23,8 @@ call plug#end()
 if has("nvim")
 	set laststatus=3
 	set shada="NONE"
+	set cmdheight=0
+	set mousescroll=ver:1,hor:1
 else
 	set laststatus=2
 	set viminfo=
@@ -58,8 +59,6 @@ let g:lightline.tab = {'active': ['filename', 'modified'], 'inactive': ['filenam
 
 let g:sneak#label = 1
 let g:sneak#target_labels = "qwertyuiopasdfgzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
-
-let g:vim_search_pulse_mode = 'pattern'
 
 let g:ctrlp_match_window = 'min:1,max:20'
 let g:ctrlp_show_hidden = 1
@@ -135,8 +134,9 @@ autocmd VimEnter,WinEnter * match TrailingWhitespace /\s\+$/
 autocmd InsertEnter * highlight clear TrailingWhitespace
 autocmd VimEnter,WinEnter,InsertLeave * highlight TrailingWhitespace gui=strikethrough,underline cterm=strikethrough,underline guifg=red ctermfg=red
 
-hi def link elixirStringDelimiter String
+hi link elixirStringDelimiter String
 hi link TermExitMsg Special
+hi CurSearch guibg=white ctermbg=white ctermfg=black guifg=black cterm=underline gui=underline
 
 func StripTrailingWhitespace()
 	let l:saved_view = winsaveview()
