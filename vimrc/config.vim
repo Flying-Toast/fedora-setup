@@ -24,7 +24,6 @@ if has("nvim")
 	set laststatus=3
 	set shada="NONE"
 	set cmdheight=0
-	set mousescroll=ver:1,hor:1
 else
 	set laststatus=2
 	set viminfo=
