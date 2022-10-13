@@ -260,10 +260,7 @@ lua <<EOF
 	lspconfig.rust_analyzer.setup({ on_attach=on_attach })
 	lspconfig.clangd.setup({ on_attach=on_attach })
 	lspconfig.jedi_language_server.setup({ on_attach=on_attach })
-	lspconfig.elixirls.setup({
-		on_attach=on_attach,
-		cmd = { "language_server.sh" },
-	})
+	lspconfig.elixirls.setup({ on_attach=on_attach })
 	lspconfig.ocamllsp.setup({ on_attach=on_attach })
 
 	vim.keymap.set('n', '<C-a>', vim.lsp.buf.hover)
