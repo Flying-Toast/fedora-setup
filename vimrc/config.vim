@@ -131,7 +131,7 @@ endif
 
 " visible trailing whitespace
 autocmd VimEnter,WinEnter * match TrailingWhitespace /\s\+$/
-autocmd InsertEnter * highlight clear TrailingWhitespace
+autocmd InsertEnter,TermEnter * highlight clear TrailingWhitespace
 autocmd VimEnter,WinEnter,InsertLeave * highlight TrailingWhitespace gui=strikethrough,underline cterm=strikethrough,underline guifg=red ctermfg=red
 
 hi link elixirStringDelimiter String
