@@ -274,7 +274,7 @@ lua <<EOF
 		highlight = {
 			enable = true,
 			-- TODO: rmeove haskell and elixir once their treesitter impls aren't slow AF
-			disable = { "vim", "elixir", "help", "haskell" },
+			disable = { "vim", "elixir", "help", "haskell", "markdown" },
 		},
 	})
 
