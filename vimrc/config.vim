@@ -45,8 +45,6 @@ set shm+=I
 set path=**
 set mouse=a
 set completeopt=noinsert,menuone
-set title
-set titlestring=%{%MakeTitleString()%}
 
 let mapleader = ","
 syntax on
@@ -148,14 +146,6 @@ func StripTrailingWhitespace()
 	silent keeppatterns %s/\s\+$//e
 	call winrestview(l:saved_view)
 	echo "Trimmed " . l:nsubbed . " line(s)"
-endfunc
-
-func MakeTitleString()
-	if &ft == 'man'
-		return '%t'
-	else
-		return '%F'
-	endif
 endfunc
 
 func PopupTerm(...)
