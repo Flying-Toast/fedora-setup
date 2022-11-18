@@ -23,7 +23,6 @@ call plug#end()
 if has("nvim")
 	set laststatus=3
 	set shada="NONE"
-	set cmdheight=0
 else
 	set laststatus=2
 	set viminfo=
