@@ -16,7 +16,6 @@ if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 call plug#end()
 
@@ -255,17 +254,6 @@ lua <<EOF
 	vim.keymap.set('i', '<C-j>', vim.lsp.buf.signature_help)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition)
-
-	-- treesitter
-	require'nvim-treesitter.configs'.setup({
-		ensure_intalled = { "ocaml" },
-		auto_install = true,
-		highlight = {
-			enable = true,
-			-- TODO: rmeove haskell and elixir once their treesitter impls aren't slow AF
-			disable = { "vim", "elixir", "help", "haskell", "markdown" },
-		},
-	})
 
 	-- hack to get rid of the annoying warning when editing standalone rust files
 	local old_notify = vim.notify
