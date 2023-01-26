@@ -11,7 +11,7 @@ done
 dconf write /org/gnome/shell/enabled-extensions "[$ENABLED_EXTENSIONS]"
 
 # wallpaper
-WALLPAPER_NAME="beavis-and-butthead.jpg"
+WALLPAPER_NAME="onedark.png"
 cp wallpaper/$WALLPAPER_NAME ~/Pictures
 dconf write /org/gnome/desktop/background/picture-uri "'file://$HOME/Pictures/$WALLPAPER_NAME'"
 dconf write /org/gnome/desktop/background/picture-uri-dark "'file://$HOME/Pictures/$WALLPAPER_NAME'"
