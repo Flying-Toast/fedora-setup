@@ -12,6 +12,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'alvan/vim-closetag'
 Plug 'preservim/nerdtree'
+Plug 'DingDean/wgsl.vim'
 if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
