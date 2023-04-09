@@ -76,8 +76,6 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_nesting_quotes = ['"', "'", "`"]
 let g:delimitMate_balance_matchpairs = 1
 
-let g:haskell_indent_disable=1
-
 command -nargs=1 -complete=filetype Ft set ft=<args>
 
 func CommandAbbrev(from, to)
@@ -117,7 +115,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " fix for https://github.com/elixir-editors/vim-elixir/issues/562
 autocmd FileType heex set filetype=eelixir
 autocmd FileType rust,html setlocal matchpairs-=<:>
-autocmd FileType haskell setlocal expandtab shiftwidth=4 tabstop=4
+autocmd FileType haskell setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType ocaml setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType ocaml let b:delimitMate_quotes = '"'
 if has("nvim")
