@@ -18,3 +18,6 @@ export MANPAGER="vim +Man!"
 export LESSHISTFILE="-"
 
 shopt -s histappend
+
+bind "\C-k":history-search-backward
+bind "\C-j":history-search-forward
