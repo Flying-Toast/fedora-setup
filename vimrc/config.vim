@@ -99,6 +99,8 @@ nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 nnoremap <Leader>f <Cmd>call FormatCurrentBuffer()<CR>
 nnoremap <Leader>r <Cmd>call DoRunner()<CR>
 nnoremap <C-e> <CMD>NERDTreeToggle<CR>
+nnoremap gh <C-]>
+nnoremap <C-]> <CMD>echo 'nononono use gh'<CR>
 " insert
 " terminal
 tnoremap <Esc> <C-\><C-n>
