@@ -84,6 +84,10 @@ func DoFt(newft)
 		call setpos(".", [0, 2, 20, 0])
 		normal! v
 		call setpos(".", [0, 2, 22, 0])
+	elseif a:newft == "c"
+		call setline(1, ['#include <stdio.h>', '', 'int main(int argc, char **argv) {', "\t", '}'])
+		call setpos(".", [0, 4, 0, 0])
+		startinsert!
 	endif
 endfunc
 
