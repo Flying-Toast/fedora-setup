@@ -76,7 +76,16 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_nesting_quotes = ['"', "'", "`"]
 let g:delimitMate_balance_matchpairs = 1
 
-command -nargs=1 -complete=filetype Ft set ft=<args>
+command -nargs=1 -complete=filetype Ft call DoFt(<q-args>)
+func DoFt(newft)
+	let &ft=a:newft
+	if a:newft == "rust" && bufname() == ""
+		call setline(1, ['fn main() {', '    println!("{}", 123);', '}'])
+		call setpos(".", [0, 2, 20, 0])
+		normal! v
+		call setpos(".", [0, 2, 22, 0])
+	endif
+endfunc
 
 func CommandAbbrev(from, to)
 	execute 'cabbrev ' . a:from . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:to . '" : "' . a:from . '"<CR>'
