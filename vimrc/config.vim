@@ -98,6 +98,7 @@ nnoremap <Leader>t <Cmd>call PopupTerm()<CR>
 nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 nnoremap <Leader>f <Cmd>call FormatCurrentBuffer()<CR>
 nnoremap <Leader>r <Cmd>call DoRunner()<CR>
+nnoremap <Leader>e <Cmd>call PopupTerm("cargo test", { 'on_exit': {job_id, code, event -> "foo"}})<CR>
 nnoremap <C-e> <CMD>NERDTreeToggle<CR>
 nnoremap gh <C-]>
 nnoremap <C-]> <CMD>echo 'nononono use gh'<CR>
