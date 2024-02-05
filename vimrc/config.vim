@@ -79,15 +79,17 @@ let g:delimitMate_balance_matchpairs = 1
 command -nargs=1 -complete=filetype Ft call DoFt(<q-args>)
 func DoFt(newft)
 	let &ft=a:newft
-	if a:newft == "rust" && bufname() == ""
-		call setline(1, ['fn main() {', '    println!("{}", 123);', '}'])
-		call setpos(".", [0, 2, 20, 0])
-		normal! v
-		call setpos(".", [0, 2, 22, 0])
-	elseif a:newft == "c"
-		call setline(1, ['#include <stdio.h>', '', 'int main(int argc, char **argv) {', "\t", '}'])
-		call setpos(".", [0, 4, 0, 0])
-		startinsert!
+	if bufname() == "" && wordcount()["bytes"] == 0
+		if a:newft == "rust"
+			call setline(1, ['fn main() {', '    println!("{}", 123);', '}'])
+			call setpos(".", [0, 2, 20, 0])
+			normal! v
+			call setpos(".", [0, 2, 22, 0])
+		elseif a:newft == "c"
+			call setline(1, ['#include <stdio.h>', '', 'int main(int argc, char **argv) {', "\t", '}'])
+			call setpos(".", [0, 4, 0, 0])
+			startinsert!
+		endif
 	endif
 endfunc
 
