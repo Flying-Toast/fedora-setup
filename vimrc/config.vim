@@ -201,7 +201,7 @@ func DoRunner()
 	if &ft == "rust"
 		if FileInCwdOrAbove("Cargo.toml") == ""
 			let l:exename = tempname()
-			call PopupTerm("rustc " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
+			call PopupTerm("rustc --edition 2021 " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
 		else
 			call PopupTerm("cargo run", l:termopts)
 		endif
