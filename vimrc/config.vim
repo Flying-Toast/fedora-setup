@@ -240,10 +240,10 @@ func DoRunner()
 		endif
 	elseif &ft == "cpp"
 		let l:exename = tempname()
-		call PopupTerm("gcc -x c++ " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
+		call PopupTerm("gcc -Wall -x c++ " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
 	elseif &ft == "c"
 		let l:exename = tempname()
-		call PopupTerm("gcc -x c " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
+		call PopupTerm("gcc -Wall -x c " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
 	elseif &ft == "prolog"
 		call PopupTerm("swipl " . l:filename, l:termopts)
 	elseif &ft == "java"
