@@ -280,15 +280,5 @@ lua <<EOF
 	vim.keymap.set('i', '<C-j>', vim.lsp.buf.signature_help)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition)
-
-	-- hack to get rid of the annoying warning when editing standalone rust files
-	local old_notify = vim.notify
-	local silence_pat = '[lspconfig] cmd ("cargo'
-	vim.notify = function(msg, level, opts)
-		if (string.sub(msg, 1, string.len(silence_pat)) ~= silence_pat)
-		then
-			old_notify(msg, level, opts)
-		end
-	end
 EOF
 endif
