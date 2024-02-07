@@ -89,6 +89,10 @@ func DoFt(newft)
 			call setline(1, ['#include <stdio.h>', '', 'int main(int argc, char **argv) {', "\t", '}'])
 			call setpos(".", [0, 4, 0, 0])
 			startinsert!
+		elseif a:newft == "cpp"
+			call setline(1, ['#include <iostream>', '', 'int main(int argc, char **argv) {', "\t", '}'])
+			call setpos(".", [0, 4, 0, 0])
+			startinsert!
 		endif
 	endif
 endfunc
@@ -232,6 +236,9 @@ func DoRunner()
 				call PopupTerm("mix run", l:termopts)
 			endif
 		endif
+	elseif &ft == "cpp"
+		let l:exename = tempname()
+		call PopupTerm("gcc -x c++ " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
 	elseif &ft == "c"
 		let l:exename = tempname()
 		call PopupTerm("gcc -x c " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
