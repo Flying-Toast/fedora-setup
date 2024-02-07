@@ -69,6 +69,8 @@ let NERDTreeCascadeSingleChildDir=0
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 let NERDTreeShowLineNumbers=1
+let NERDTreeMapJumpNextSibling=""
+let NERDTreeMapJumpPrevSibling=""
 autocmd FileType nerdtree setlocal rnu
 
 let g:delimitMate_expand_cr = 1
