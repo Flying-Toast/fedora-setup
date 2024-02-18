@@ -124,6 +124,7 @@ nnoremap <Leader>e <Cmd>call PopupTerm("cargo test", { 'on_exit': {job_id, code,
 nnoremap <C-e> <CMD>NERDTreeToggle<CR>
 nnoremap gh <C-]>
 nnoremap <C-]> <CMD>echo 'nononono use gh'<CR>
+nnoremap : <Plug>Sneak_,
 " insert
 " terminal
 tnoremap <Esc> <C-\><C-n>
