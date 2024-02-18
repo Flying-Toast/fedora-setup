@@ -104,6 +104,7 @@ func CommandAbbrev(from, to)
 endfunc
 call CommandAbbrev("f", "find")
 call CommandAbbrev("tm", "tab Man")
+call CommandAbbrev("th", "tab help")
 call CommandAbbrev("man", "Man")
 call CommandAbbrev("ft", "Ft")
 
