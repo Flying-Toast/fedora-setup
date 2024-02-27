@@ -244,8 +244,13 @@ func DoRunner()
 		let l:exename = tempname()
 		call PopupTerm("g++ -Wall -x c++ " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
 	elseif &ft == "c"
-		let l:exename = tempname()
-		call PopupTerm("gcc -Wall -x c " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
+		let l:makefile = FileInCwdOrAbove("Makefile")
+		if l:makefile == ""
+			let l:exename = tempname()
+			call PopupTerm("gcc -Wall -x c " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
+		else
+			call PopupTerm("cd " . fnamemodify(l:makefile, ":h") . " && make", l:termopts)
+		endif
 	elseif &ft == "prolog"
 		call PopupTerm("swipl " . l:filename, l:termopts)
 	elseif &ft == "java"
