@@ -125,8 +125,8 @@ nnoremap gh <C-]>
 nnoremap <C-]> <CMD>echo 'nononono use gh'<CR>
 nnoremap : <Plug>Sneak_,
 " insert
-inoremap <C-k> <Cmd>tabnext<CR>
-inoremap <C-j> <Cmd>tabprevious<CR><cmd>echo 'REMINDER: signature-help moved to c-h'<CR>
+inoremap <C-k> <Cmd>tabnext<CR><esc>
+inoremap <C-j> <Cmd>tabprevious<CR><cmd>echo 'REMINDER: signature-help moved to c-h'<CR><esc>
 " terminal
 tnoremap <Esc> <C-\><C-n>
 " operator
