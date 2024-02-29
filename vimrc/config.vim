@@ -114,7 +114,6 @@ nnoremap <C-k> <Cmd>tabnext<CR>
 nnoremap <C-j> <Cmd>tabprevious<CR>
 nnoremap <Esc> <Cmd>noh<CR>
 nnoremap <C-w>t <C-w>T
-nnoremap <C-e> <CMD>Lexplore<CR>
 nnoremap <C-t> <Cmd>tabnew<CR>
 nnoremap <Leader>t <Cmd>call PopupTerm()<CR>
 nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
@@ -126,6 +125,8 @@ nnoremap gh <C-]>
 nnoremap <C-]> <CMD>echo 'nononono use gh'<CR>
 nnoremap : <Plug>Sneak_,
 " insert
+inoremap <C-k> <Cmd>tabnext<CR>
+inoremap <C-j> <Cmd>tabprevious<CR><cmd>echo 'REMINDER: signature-help moved to c-h'<CR>
 " terminal
 tnoremap <Esc> <C-\><C-n>
 " operator
@@ -286,7 +287,7 @@ lua <<EOF
 	lspconfig.ocamllsp.setup({ on_attach=on_attach })
 
 	vim.keymap.set('n', '<C-a>', vim.lsp.buf.hover)
-	vim.keymap.set('i', '<C-j>', vim.lsp.buf.signature_help)
+	vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition)
 EOF
