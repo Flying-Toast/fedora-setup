@@ -27,7 +27,9 @@ else
 	set laststatus=2
 	set viminfo=
 endif
-set termguicolors
+if &term =~ "xterm*"
+	set termguicolors
+endif
 set tabstop=8
 set shiftwidth=8
 set smartindent
@@ -123,7 +125,6 @@ nnoremap <Leader>e <Cmd>call PopupTerm("cargo test", { 'on_exit': {job_id, code,
 nnoremap <C-e> <CMD>NERDTreeToggle<CR>
 nnoremap gh <C-]>
 nnoremap <C-]> <CMD>echo 'nononono use gh'<CR>
-nnoremap : <Plug>Sneak_,
 " insert
 inoremap <C-k> <Cmd>tabnext<CR><esc>
 inoremap <C-j> <Cmd>tabprevious<CR><cmd>echo 'REMINDER: signature-help moved to c-h'<CR><esc>
