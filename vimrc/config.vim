@@ -288,7 +288,18 @@ lua <<EOF
 	lspconfig.elixirls.setup({ on_attach=on_attach })
 	lspconfig.ocamllsp.setup({ on_attach=on_attach })
 
-	vim.keymap.set('n', '<C-a>', vim.lsp.buf.hover)
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+		vim.lsp.handlers.hover, { close_events={"QuitPre"} }
+	)
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+		vim.lsp.handlers.signature_help, { focusable=false, close_events={"CursorMoved"} }
+	)
+	local hoverhandler = function()
+		-- WHAT THE FUCK
+		vim.lsp.buf.hover()
+		vim.lsp.buf.hover()
+	end
+	vim.keymap.set('n', '<C-a>', hoverhandler)
 	vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition)
