@@ -107,7 +107,6 @@ endfunc
 call CommandAbbrev("f", "find")
 call CommandAbbrev("tm", "tab Man")
 call CommandAbbrev("th", "tab help")
-call CommandAbbrev("ts", "tab split")
 call CommandAbbrev("man", "Man")
 call CommandAbbrev("ft", "Ft")
 
@@ -117,7 +116,7 @@ nnoremap <C-k> <Cmd>tabnext<CR>
 nnoremap <C-j> <Cmd>tabprevious<CR>
 nnoremap <Esc> <Cmd>noh<CR>
 nnoremap <C-w>t <C-w>T
-nnoremap <C-t> <Cmd>tabnew<CR>
+nnoremap <C-t> <Cmd>tab split<CR>
 nnoremap <Leader>t <Cmd>call PopupTerm()<CR>
 nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 nnoremap <Leader>f <Cmd>call FormatCurrentBuffer()<CR>
