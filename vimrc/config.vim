@@ -107,6 +107,7 @@ endfunc
 call CommandAbbrev("f", "find")
 call CommandAbbrev("tm", "tab Man")
 call CommandAbbrev("th", "tab help")
+call CommandAbbrev("ts", "tab split")
 call CommandAbbrev("man", "Man")
 call CommandAbbrev("ft", "Ft")
 
