@@ -1,0 +1,25 @@
+/*
+ * This is a highly stripped down version of
+ * https://github.com/Etesam913/slick-fox.
+ *
+ * It hides the url bar/reload/forward/back unless the url
+ * bar is focused (i.e. with Ctrl-L).
+ */
+
+#nav-bar {
+	visibility: visible;
+	margin-top: -40px;
+	opacity: 0;
+	z-index: -100;
+}
+
+#nav-bar:focus-within,
+#urlbar[focused="true"],
+#identity-box[open="true"],
+#toolbar-menubar:not([inactive="true"]) {
+	visibility: visible;
+	margin-top: 0;
+	opacity: 100;
+	margin-bottom: -0.2px;
+	z-index: auto;
+}

@@ -1,5 +1,8 @@
 TODO: automate this
 
+== userChrome ==
+cp userChrome.css ~/.mozilla/firefox/fjewaoijfoiewafj.default/chrome/userChrome.css
+
 == about:config ==
 network.IDN_show_punycode true
 extensions.pocket.enabled false
