@@ -125,6 +125,7 @@ nnoremap <Leader>e <Cmd>call PopupTerm("cargo test", { 'on_exit': {job_id, code,
 nnoremap <C-e> <CMD>NERDTreeToggle<CR>
 nnoremap gh <C-]>
 nnoremap <C-]> <CMD>echo 'nononono use gh'<CR>
+nnoremap <C-d> <CMD>call ShowBracketMatchLine()<CR>
 " insert
 inoremap <C-k> <Cmd>tabnext<CR><esc>
 inoremap <C-j> <Cmd>tabprevious<CR><cmd>echo 'REMINDER: signature-help moved to c-h'<CR><esc>
@@ -171,6 +172,14 @@ func StripTrailingWhitespace()
 	silent keeppatterns %s/\s\+$//e
 	call winrestview(l:saved_view)
 	echo "Trimmed " . l:nsubbed . " line(s)"
+endfunc
+
+func ShowBracketMatchLine()
+	let l:view = winsaveview()
+	norm %
+	let l:line = trim(getline("."))
+	call winrestview(l:view)
+	echo l:line
 endfunc
 
 func PopupTerm(...)
