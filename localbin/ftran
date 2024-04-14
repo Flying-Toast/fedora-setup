@@ -66,7 +66,7 @@ class FormUploadHandler(BaseHTTPRequestHandler):
 
 def run(handler):
     host = socket.gethostbyname(socket.getfqdn())
-    print(f"\n\n\n{host}:{PORT}\n\n\n")
+    print(f"\n\n\n        http://{host}:{PORT}\n\n\n")
     HTTPServer(("", PORT), handler).serve_forever()
 
 def usage():
