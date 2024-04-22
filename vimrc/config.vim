@@ -117,6 +117,7 @@ nnoremap <C-j> <Cmd>tabprevious<CR>
 nnoremap <Esc> <Cmd>noh<CR>
 nnoremap <C-w>t <C-w>T
 nnoremap <C-t> <Cmd>tab split<CR>
+nnoremap <C-n> <Cmd>enew<CR>
 nnoremap <Leader>t <Cmd>call PopupTerm()<CR>
 nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 nnoremap <Leader>f <Cmd>call FormatCurrentBuffer()<CR>
