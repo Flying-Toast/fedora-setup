@@ -24,3 +24,7 @@ cp ./irbrc ~/.irbrc
 mkdir -p ~/.local/bin
 mv ~/.local/bin ./localbin_OLD
 cp -r ./localbin ~/.local/bin
+
+mkdir -p ~/.local/share/scramble_notif
+cp -n ./tnoodle-cli.jar ~/.local/share/scramble_notif
+cp ./scramblenotif.sh ~/.local/share/scramble_notif

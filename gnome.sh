@@ -56,7 +56,11 @@ dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/cus
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Primary><Alt>t'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'gnome-terminal --working-directory=workspace'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'Terminal'"
-dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
+# scramble notification keybinding
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/scramblenotif/binding "'<Alt>s'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/scramblenotif/command "'$HOME/.local/share/scramble_notif/scramblenotif.sh'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/scramblenotif/name "'Scramble Notif'"
+dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/scramblenotif/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/www "['<Super>f']"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/email "['<Super>g']"
 dconf write /org/gnome/settings-daemon/plugins/color/night-light-enabled true
