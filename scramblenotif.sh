@@ -11,6 +11,6 @@ then
 	savescram
 fi
 
-notify-send -a "3x3 scramble" "$(cat "$NEXTPATH")"
+notify-send -a "3x3 scramble" "$(cat "$NEXTPATH")" -u critical
 rm "$NEXTPATH"
 savescram
