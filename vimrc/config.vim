@@ -17,6 +17,7 @@ if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 call plug#end()
 
@@ -275,6 +276,10 @@ endfunc
 
 if has("nvim")
 lua <<EOF
+	require('nvim-treesitter.configs').setup({
+		ensure_installed = { "vimdoc" }
+	})
+
 	require('mason').setup()
 	require('mason-lspconfig').setup({
 		automatic_installation = true,
