@@ -5,7 +5,7 @@ dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-releas
 awk '$1=="+"{print $2}' packages | xargs dnf install -y
 awk '$1=="-"{print $2}' packages | xargs dnf remove -y
 
-ln -s /usr/bin/nvim /usr/bin/vim
+ln -s "/home/$SUDO_USER/.local/share/nvim-0.9.5/bin/nvim" /usr/bin/vim
 
 updatedb
 

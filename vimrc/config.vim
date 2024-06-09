@@ -17,7 +17,6 @@ if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 call plug#end()
 
@@ -276,10 +275,6 @@ endfunc
 
 if has("nvim")
 lua <<EOF
-	require('nvim-treesitter.configs').setup({
-		ensure_installed = { "vimdoc" }
-	})
-
 	require('mason').setup()
 	require('mason-lspconfig').setup({
 		automatic_installation = true,
@@ -296,18 +291,10 @@ lua <<EOF
 		vim.keymap.set('i', '<C-n>', ctrln_handler, { buffer=bufnr, noremap=true })
 	end
 
-	-- fuck you motherfucking piece of shit
-	for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
-		if group ~= "@lsp.type.class" and group ~= "@lsp.type.enum" and group ~= "@lsp.type.enumMember" and group ~= "@lsp.type.interface" and group ~= "@lsp.type.property" and group ~= "@lsp.type.struct" and group ~= "@lsp.type.type" and group ~= "@lsp.type.typeParameter" then
-			vim.api.nvim_set_hl(0, group, {})
-		end
-	end
-
 	lspconfig.rust_analyzer.setup({ on_attach=on_attach })
 	lspconfig.clangd.setup({ on_attach=on_attach })
 	lspconfig.jedi_language_server.setup({ on_attach=on_attach })
 	lspconfig.elixirls.setup({ on_attach=on_attach })
-	lspconfig.ocamllsp.setup({ on_attach=on_attach })
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 		vim.lsp.handlers.hover, { close_events={"QuitPre"} }
