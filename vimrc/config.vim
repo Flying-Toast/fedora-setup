@@ -17,6 +17,7 @@ if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 call plug#end()
 
@@ -296,6 +297,10 @@ lua <<EOF
 	lspconfig.jedi_language_server.setup({ on_attach=on_attach })
 	lspconfig.elixirls.setup({ on_attach=on_attach })
 	lspconfig.ocamllsp.setup({ on_attach=on_attach })
+
+	for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+		vim.api.nvim_set_hl(0, group, {})
+	end
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 		vim.lsp.handlers.hover, { close_events={"QuitPre"} }
