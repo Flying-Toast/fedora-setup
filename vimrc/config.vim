@@ -291,6 +291,13 @@ lua <<EOF
 		vim.keymap.set('i', '<C-n>', ctrln_handler, { buffer=bufnr, noremap=true })
 	end
 
+	-- fuck you motherfucking piece of shit
+	for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+		if group ~= "@lsp.type.class" and group ~= "@lsp.type.enum" and group ~= "@lsp.type.enumMember" and group ~= "@lsp.type.interface" and group ~= "@lsp.type.property" and group ~= "@lsp.type.struct" and group ~= "@lsp.type.type" and group ~= "@lsp.type.typeParameter" then
+			vim.api.nvim_set_hl(0, group, {})
+		end
+	end
+
 	lspconfig.rust_analyzer.setup({ on_attach=on_attach })
 	lspconfig.clangd.setup({ on_attach=on_attach })
 	lspconfig.jedi_language_server.setup({ on_attach=on_attach })
