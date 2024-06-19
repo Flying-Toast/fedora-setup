@@ -196,7 +196,7 @@ endfunc
 func FormatCurrentBuffer()
 	let l:saved_view = winsaveview()
 	if &ft == "rust"
-		%!rustfmt
+		RustFmt
 	elseif &ft == "ocaml"
 		let l:expanded = expand("%:t")
 		let l:filename = l:expanded == "" ? "vimocamlfmttmp.ml" : l:expanded
