@@ -13,6 +13,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'alvan/vim-closetag'
 Plug 'preservim/nerdtree'
 Plug 'DingDean/wgsl.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
@@ -139,6 +140,7 @@ omap S <Plug>Sneak_S
 noremap <Space> :
 noremap Q <Nop>
 
+au BufNewFile,BufRead *.slint set filetype=slint
 autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd TermOpen * syntax match TermExitMsg /^\[Process exited [0-9]\+\]$/
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -279,6 +281,15 @@ lua <<EOF
 	require('mason-lspconfig').setup({
 		automatic_installation = true,
 	})
+	require('nvim-treesitter.configs').setup({
+		ensure_installed = { "slint", "c", "lua", "vimdoc", "vim" },
+		auto_install = false,
+		highlight = {
+			enable = { "slint" },
+			disable = { "vimdoc", "lua", "help", "vim" }
+		},
+	})
+
 	local lspconfig = require('lspconfig')
 
 	local on_attach = function(client, bufnr)
@@ -295,6 +306,7 @@ lua <<EOF
 	lspconfig.clangd.setup({ on_attach=on_attach })
 	lspconfig.jedi_language_server.setup({ on_attach=on_attach })
 	lspconfig.elixirls.setup({ on_attach=on_attach })
+	lspconfig.slint_lsp.setup({ on_attach=on_attach })
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 		vim.lsp.handlers.hover, { close_events={"QuitPre"} }
@@ -311,5 +323,6 @@ lua <<EOF
 	vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition)
+	vim.keymap.set('n', '<C-c>', vim.lsp.buf.code_action)
 EOF
 endif
