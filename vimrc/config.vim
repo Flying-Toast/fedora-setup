@@ -282,10 +282,10 @@ lua <<EOF
 		automatic_installation = true,
 	})
 	require('nvim-treesitter.configs').setup({
-		ensure_installed = { "slint", "c", "lua", "vimdoc", "vim" },
+		ensure_installed = { "slint", "c", "lua", "vimdoc", "vim", "blueprint" },
 		auto_install = false,
 		highlight = {
-			enable = { "slint" },
+			enable = { "slint", "c", "blueprint" },
 			disable = { "vimdoc", "lua", "help", "vim" }
 		},
 	})
