@@ -205,6 +205,8 @@ func FormatCurrentBuffer()
 		let l:expanded = expand("%:t")
 		let l:filename = l:expanded == "" ? "vimocamlfmttmp.ml" : l:expanded
 		exec "%!ocamlformat --enable-outside-detected-project - --name=" . l:filename
+	elseif &ft == "xml"
+		%!xmllint --format - | unexpand --first-only -t 2
 	else
 		echo "No formatter configued for filetype='" . &ft . "'"
 		return
