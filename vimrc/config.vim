@@ -59,6 +59,8 @@ let g:lightline.tab = {'active': ['filename', 'modified'], 'inactive': ['filenam
 let g:sneak#label = 1
 let g:sneak#target_labels = "qwertyuiopasdfgzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
 
+let g:closetag_filenames = '*.html,*.xml,*.ui'
+
 let g:ctrlp_match_window = 'min:1,max:20'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_clear_cache_on_exit = 1
