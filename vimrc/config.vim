@@ -149,7 +149,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " fix for https://github.com/elixir-editors/vim-elixir/issues/562
 autocmd FileType heex set filetype=eelixir
 autocmd FileType rust,html,xml setlocal matchpairs-=<:>
-autocmd FileType haskell,xml,html setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType haskell,xml,html,blp setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType ocaml setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType ocaml let b:delimitMate_quotes = '"'
 if has("nvim")
