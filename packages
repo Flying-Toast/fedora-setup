@@ -5,8 +5,16 @@
 + gnome-extensions-app
 + ImageMagick
 + nmap
-+ g++ (needed to compile nvim treesitter things)
++ g++
 + gdb
++ powertop
++ ruby
++ rubygem-irb
++ gcc
++ dejavu-sans-mono-fonts
++ clang
++ mold
++ gnome-themes-extra
 
 == elixir development stuff ==
 + elixir

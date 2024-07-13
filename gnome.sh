@@ -20,7 +20,7 @@ dconf write /org/gnome/desktop/screensaver/picture-uri "'file://$HOME/Pictures/$
 # terminal
 TERM_BASE="/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "[='=]")"
 dconf write $TERM_BASE/use-system-font false
-dconf write $TERM_BASE/font "'DejaVu Sans Mono 12'"
+dconf write $TERM_BASE/font "'DejaVu Sans Mono 18'"
 dconf write $TERM_BASE/audible-bell false
 dconf write $TERM_BASE/scrollbar-policy "'never'"
 dconf write $TERM_BASE/use-theme-colors false

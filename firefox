@@ -1,7 +1,7 @@
 TODO: automate this
 
 == userChrome ==
-cp userChrome.css ~/.mozilla/firefox/fjewaoijfoiewafj.default/chrome/userChrome.css
+cp userChrome.css ~/.mozilla/firefox/fjewaoijfoiewafj.default-release/chrome/userChrome.css
 
 == about:config ==
 network.IDN_show_punycode true
@@ -12,3 +12,4 @@ browser.urlbar.dnsResolveSingleWordsAfterSearch 0
 browser.tabs.insertAfterCurrent true
 browser.gesture.swipe.right ""
 browser.gesture.swipe.left ""
+toolkit.legacyUserProfileCustomizations.stylesheets true
