@@ -3,6 +3,8 @@
 # rustup
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 rm ~/.cargo/env
+~/.cargo/bin/rustup component add rust-src
+~/.cargo/bin/rustup component add rust-analyzer
 
 mkdir ~/workspace
 
