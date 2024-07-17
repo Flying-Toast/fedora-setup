@@ -1,23 +1,21 @@
 call plug#begin()
+Plug 'pbrisbin/vim-colors-off'
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'rust-lang/rust.vim'
-Plug 'neovimhaskell/haskell-vim'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'gregsexton/MatchTag'
-Plug 'elixir-editors/vim-elixir'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'alvan/vim-closetag'
 Plug 'preservim/nerdtree'
-Plug 'DingDean/wgsl.vim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 call plug#end()
 
@@ -50,7 +48,7 @@ set completeopt=noinsert,menuone
 
 let mapleader = ","
 syntax on
-colorscheme onedark
+colorscheme off
 
 let g:lightline = {'colorscheme': 'onedark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
@@ -128,7 +126,6 @@ nnoremap <Leader>r <Cmd>call DoRunner()<CR>
 nnoremap <Leader>e <Cmd>call PopupTerm("cargo test", { 'on_exit': {job_id, code, event -> "foo"}})<CR>
 nnoremap <C-e> <CMD>NERDTreeToggle<CR>
 nnoremap gh <C-]>
-nnoremap <C-]> <CMD>echo 'nononono use gh'<CR>
 nnoremap <C-d> <CMD>call ShowBracketMatchLine()<CR>
 " insert
 inoremap <C-k> <Cmd>tabnext<CR><esc>
@@ -162,6 +159,11 @@ autocmd VimEnter,WinEnter * match TrailingWhitespace /\s\+$/
 autocmd InsertEnter,TermEnter * highlight clear TrailingWhitespace
 autocmd VimEnter,WinEnter,InsertLeave * highlight TrailingWhitespace gui=strikethrough,underline cterm=strikethrough,underline guifg=red ctermfg=red
 
+hi! link Todo Comment
+hi Normal guibg=#282c34
+hi String guifg=#a2bf95
+hi link rustCommentLineDoc Comment
+hi link rustCommentBlockDoc Comment
 hi link elixirStringDelimiter String
 hi link TermExitMsg Special
 hi CurSearch guibg=white ctermbg=white ctermfg=black guifg=black cterm=underline gui=underline

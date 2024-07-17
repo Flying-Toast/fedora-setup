@@ -3,24 +3,24 @@
 # gnome extensions:
 ENABLED_EXTENSIONS="'launch-new-instance@gnome-shell-extensions.gcampax.github.com'" # comma separated
 mkdir -p ~/.local/share/gnome-shell/extensions
-for EXTENSION in $(ls ./gnome-extensions/)
+for EXTENSION in $(ls ./shell-extensions/)
 do
-	cp -r ./gnome-extensions/$EXTENSION ~/.local/share/gnome-shell/extensions/
+	cp -r ./shell-extensions/$EXTENSION ~/.local/share/gnome-shell/extensions/
 	ENABLED_EXTENSIONS="$ENABLED_EXTENSIONS,'$EXTENSION'"
 done
 dconf write /org/gnome/shell/enabled-extensions "[$ENABLED_EXTENSIONS]"
 
 # wallpaper
-WALLPAPER_NAME="onedark.png"
-cp wallpaper/$WALLPAPER_NAME ~/Pictures
-dconf write /org/gnome/desktop/background/picture-uri "'file://$HOME/Pictures/$WALLPAPER_NAME'"
-dconf write /org/gnome/desktop/background/picture-uri-dark "'file://$HOME/Pictures/$WALLPAPER_NAME'"
-dconf write /org/gnome/desktop/screensaver/picture-uri "'file://$HOME/Pictures/$WALLPAPER_NAME'"
+dconf write /org/gnome/desktop/background/picture-uri "'file:///usr/share/backgrounds/gnome/blobs-l.svg'"
+dconf write /org/gnome/desktop/background/picture-uri-dark "'file:///usr/share/backgrounds/gnome/blobs-d.svg'"
+dconf write /org/gnome/desktop/background/primary-color "'#241f31'"
+dconf write /org/gnome/desktop/screensaver/picture-uri "'file:///usr/share/backgrounds/gnome/blobs-l.svg'"
+dconf write /org/gnome/desktop/screensaver/primary-color "'#241f31'"
 
 # terminal
 TERM_BASE="/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "[='=]")"
 dconf write $TERM_BASE/use-system-font false
-dconf write $TERM_BASE/font "'DejaVu Sans Mono 18'"
+dconf write $TERM_BASE/font "'DejaVu Sans Mono 17'"
 dconf write $TERM_BASE/audible-bell false
 dconf write $TERM_BASE/scrollbar-policy "'never'"
 dconf write $TERM_BASE/use-theme-colors false
