@@ -1,5 +1,5 @@
 call plug#begin()
-Plug 'pbrisbin/vim-colors-off'
+Plug 'Flying-Toast/quark.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'Raimondi/delimitMate'
@@ -48,7 +48,7 @@ set completeopt=noinsert,menuone
 
 let mapleader = ","
 syntax on
-colorscheme off
+colorscheme quark
 
 let g:lightline = {'colorscheme': 'onedark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
@@ -159,9 +159,6 @@ autocmd VimEnter,WinEnter * match TrailingWhitespace /\s\+$/
 autocmd InsertEnter,TermEnter * highlight clear TrailingWhitespace
 autocmd VimEnter,WinEnter,InsertLeave * highlight TrailingWhitespace gui=strikethrough,underline cterm=strikethrough,underline guifg=red ctermfg=red
 
-hi! link Todo Comment
-hi Normal guibg=#282c34
-hi String guifg=#a2bf95
 hi link rustCommentLineDoc Comment
 hi link rustCommentBlockDoc Comment
 hi link elixirStringDelimiter String
