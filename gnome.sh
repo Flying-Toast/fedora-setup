@@ -35,7 +35,7 @@ dconf write /org/gnome/desktop/peripherals/touchpad/click-method "'areas'"
 
 # gnome settings
 dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
-dconf write /org/gnome/desktop/search-providers/disabled "['org.gnome.Software.desktop']"
+dconf write /org/gnome/desktop/search-providers/disabled "['org.gnome.Software.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.mozilla.firefox.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.clocks.desktop']"
 dconf write /org/gnome/desktop/privacy/remember-recent-files false
 dconf write /org/gnome/desktop/privacy/recent-files-max-age 1
 dconf write /org/gnome/settings-daemon/plugins/media-keys/home "['<Super>e']"
@@ -76,7 +76,7 @@ dconf write /org/gnome/Geary/autoselect false
 dconf write /org/gnome/Geary/run-in-background true
 
 # other
-dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'standard'"
+dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'medium'"
 dconf write /org/gtk/settings/file-chooser/sort-directories-first true
 dconf write /org/gnome/gnome-screenshot/last-save-directory "'file://$HOME/workspace'"
 dconf write /org/gnome/desktop/notifications/show-in-lock-screen false

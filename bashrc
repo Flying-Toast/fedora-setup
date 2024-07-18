@@ -12,7 +12,7 @@ alias grep="grep --color=auto"
 alias gitconfig="git config user.name Flying-Toast && git config user.email 38232168+Flying-Toast@users.noreply.github.com"
 alias re="vim +'Ft rust'"
 
-export PS1='\033[1;30m\w\033[0;33m\$\033[0m '
+export PS1="\[$(tput setaf 0)\]\w\[$(tput setaf 3)\]$\[$(tput sgr0)\] "
 export github="git@github.com:Flying-Toast"
 export EDITOR="vim"
 export MANPAGER="vim +Man!"
