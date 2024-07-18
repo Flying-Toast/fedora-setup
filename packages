@@ -18,6 +18,7 @@
 + drawing
 + libavcodec-freeworld
 + jetbrains-mono-nl-fonts
++weak neovim
 
 == elixir development stuff ==
 + elixir

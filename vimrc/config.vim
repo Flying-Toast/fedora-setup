@@ -139,7 +139,6 @@ omap S <Plug>Sneak_S
 noremap <Space> :
 noremap Q <Nop>
 
-au BufNewFile,BufRead *.slint set filetype=slint
 autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd TermOpen * syntax match TermExitMsg /^\[Process exited [0-9]\+\]$/
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -284,10 +283,10 @@ lua <<EOF
 		automatic_installation = true,
 	})
 	require('nvim-treesitter.configs').setup({
-		ensure_installed = { "slint", "c", "lua", "vimdoc", "vim", "blueprint" },
+		ensure_installed = { "c", "lua", "vimdoc", "vim", "blueprint" },
 		auto_install = false,
 		highlight = {
-			enable = { "slint", "c", "blueprint" },
+			enable = { "c", "blueprint" },
 			disable = { "vimdoc", "lua", "help", "vim" }
 		},
 	})
@@ -308,7 +307,6 @@ lua <<EOF
 	lspconfig.clangd.setup({ on_attach=on_attach })
 	lspconfig.jedi_language_server.setup({ on_attach=on_attach })
 	lspconfig.elixirls.setup({ on_attach=on_attach })
-	lspconfig.slint_lsp.setup({ on_attach=on_attach })
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 		vim.lsp.handlers.hover, { close_events={"QuitPre"} }

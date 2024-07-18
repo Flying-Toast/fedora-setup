@@ -30,5 +30,3 @@ cp -r ./localbin ~/.local/bin
 mkdir -p ~/.local/share/scramble_notif
 cp -n ./tnoodle-cli.jar ~/.local/share/scramble_notif
 cp ./scramblenotif.sh ~/.local/share/scramble_notif
-
-cp -r nvim-0.9.5 ~/.local/share/
