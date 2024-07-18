@@ -20,7 +20,7 @@ dconf write /org/gnome/desktop/screensaver/primary-color "'#241f31'"
 # terminal
 TERM_BASE="/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d "[='=]")"
 dconf write $TERM_BASE/use-system-font false
-dconf write $TERM_BASE/font "'DejaVu Sans Mono 17'"
+dconf write $TERM_BASE/font "'JetBrains Mono NL 17'"
 dconf write $TERM_BASE/audible-bell false
 dconf write $TERM_BASE/scrollbar-policy "'never'"
 dconf write $TERM_BASE/use-theme-colors false
