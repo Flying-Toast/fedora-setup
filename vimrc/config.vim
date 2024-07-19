@@ -50,6 +50,16 @@ let mapleader = ","
 syntax on
 colorscheme quark
 
+if has("nvim")
+	let s:i = 0
+	while s:i < 16
+		execute "unlet! g:terminal_color_" . s:i
+		let s:i += 1
+	endwhile
+else
+	unlet! g:terminal_ansi_colors
+endif
+
 let g:lightline = {'colorscheme': 'onedark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
 let g:lightline.tab = {'active': ['filename', 'modified'], 'inactive': ['filename', 'modified']}
