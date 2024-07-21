@@ -48,7 +48,7 @@ set completeopt=noinsert,menuone
 
 let mapleader = ","
 
-func UnstyleTerminal()
+func PatchColorScheme()
 	if has("nvim")
 		let s:i = 0
 		while s:i < 16
@@ -58,8 +58,14 @@ func UnstyleTerminal()
 	else
 		unlet! g:terminal_ansi_colors
 	endif
+
+	hi! link rustCommentLineDoc Comment
+	hi! link rustCommentBlockDoc Comment
+	hi! link elixirStringDelimiter String
+	hi! link TermExitMsg WarningMsg
+	hi! CurSearch guibg=white ctermbg=white ctermfg=black guifg=black cterm=underline gui=underline
 endfunc
-autocmd ColorScheme * call UnstyleTerminal()
+autocmd ColorScheme * call PatchColorScheme()
 syntax on
 colorscheme quark
 
@@ -155,6 +161,7 @@ noremap Q <Nop>
 autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd TermOpen * syntax match TermExitMsg /^\[Process exited [0-9]\+\]$/
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd BufEnter *.h set filetype=c
 " fix for https://github.com/elixir-editors/vim-elixir/issues/562
 autocmd FileType heex set filetype=eelixir
 autocmd FileType rust,html,xml setlocal matchpairs-=<:>
@@ -170,12 +177,6 @@ endif
 autocmd VimEnter,WinEnter * match TrailingWhitespace /\s\+$/
 autocmd InsertEnter,TermEnter * highlight clear TrailingWhitespace
 autocmd VimEnter,WinEnter,InsertLeave * highlight TrailingWhitespace gui=strikethrough,underline cterm=strikethrough,underline guifg=red ctermfg=red
-
-hi link rustCommentLineDoc Comment
-hi link rustCommentBlockDoc Comment
-hi link elixirStringDelimiter String
-hi link TermExitMsg Special
-hi CurSearch guibg=white ctermbg=white ctermfg=black guifg=black cterm=underline gui=underline
 
 func StripTrailingWhitespace()
 	let l:saved_view = winsaveview()
