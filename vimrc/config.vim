@@ -148,7 +148,6 @@ nnoremap gh <C-]>
 nnoremap <C-d> <CMD>call ShowBracketMatchLine()<CR>
 " insert
 inoremap <C-k> <Cmd>tabnext<CR><esc>
-inoremap <C-j> <Cmd>tabprevious<CR><cmd>echo 'REMINDER: signature-help moved to c-h'<CR><esc>
 " terminal
 tnoremap <Esc> <C-\><C-n>
 " operator
@@ -156,6 +155,7 @@ omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
 " nvo
 noremap <Space> :
+noremap : <cmd>echoerr "USE SPACE!!!"<CR>
 noremap Q <Nop>
 
 autocmd TermOpen * setlocal nonumber norelativenumber
