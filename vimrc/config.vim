@@ -1,6 +1,5 @@
 call plug#begin()
 Plug 'Flying-Toast/quark.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'KabbAmine/vCoolor.vim'
@@ -69,7 +68,7 @@ autocmd ColorScheme * call PatchColorScheme()
 syntax on
 colorscheme quark
 
-let g:lightline = {'colorscheme': 'onedark'}
+let g:lightline = {'colorscheme': 'quark'}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
 let g:lightline.tab = {'active': ['filename', 'modified'], 'inactive': ['filename', 'modified']}
 
