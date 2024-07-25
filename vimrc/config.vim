@@ -154,7 +154,6 @@ omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
 " nvo
 noremap <Space> :
-noremap : <cmd>echoerr "USE SPACE!!!"<CR>
 noremap Q <Nop>
 
 autocmd TermOpen * setlocal nonumber norelativenumber
