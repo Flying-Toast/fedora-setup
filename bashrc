@@ -1,6 +1,6 @@
 [[ $- != *i* ]] && return
 
-export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH:$HOME/.cargo/bin"
 
 source /usr/share/bash-completion/bash_completion
 [[ -f $HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo ]] && source $HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo
