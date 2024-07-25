@@ -10,6 +10,7 @@ Plug 'gregsexton/MatchTag'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'alvan/vim-closetag'
 Plug 'preservim/nerdtree'
+Plug 'dyng/ctrlsf.vim'
 if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
@@ -85,6 +86,9 @@ let g:ctrlp_mruf_max = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs', 'dune-project']
 
+let g:ctrlsf_default_view_mode = "compact"
+let g:ctrlsf_regex_pattern = 1
+
 let NERDTreeBookmarksFile="/dev/null"
 let NERDTreeCascadeSingleChildDir=0
 let NERDTreeShowHidden=1
@@ -128,6 +132,7 @@ call CommandAbbrev("tm", "tab Man")
 call CommandAbbrev("th", "tab help")
 call CommandAbbrev("man", "Man")
 call CommandAbbrev("ft", "Ft")
+call CommandAbbrev("cs", "CtrlSF")
 
 " normal
 nnoremap <C-l> <Cmd>tabnew<CR><Cmd>CtrlP<CR>

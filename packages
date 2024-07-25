@@ -19,6 +19,7 @@
 + libavcodec-freeworld
 + jetbrains-mono-nl-fonts
 +weak neovim
++ ripgrep
 
 == elixir development stuff ==
 + elixir
