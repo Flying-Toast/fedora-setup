@@ -277,7 +277,7 @@ func DoRunner()
 		let l:makefile = FileInCwdOrAbove("Makefile")
 		if l:makefile == ""
 			let l:exename = tempname()
-			call PopupTerm("g++ -Wall -x c++ " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
+			call PopupTerm("c++ -Wall -x c++ " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
 		else
 			call PopupTerm("cd " . fnamemodify(l:makefile, ":h") . " && make", l:termopts)
 		endif
@@ -285,7 +285,7 @@ func DoRunner()
 		let l:makefile = FileInCwdOrAbove("Makefile")
 		if l:makefile == ""
 			let l:exename = tempname()
-			call PopupTerm("gcc -Wall -x c " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
+			call PopupTerm("cc -Wall -x c " . l:filename . " -o " . l:exename . " && " . l:exename, l:termopts)
 		else
 			call PopupTerm("cd " . fnamemodify(l:makefile, ":h") . " && make", l:termopts)
 		endif
