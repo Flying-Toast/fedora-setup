@@ -165,6 +165,7 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 autocmd TermOpen * syntax match TermExitMsg /^\[Process exited [0-9]\+\]$/
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd BufEnter *.h set filetype=c
+autocmd FileType qf setlocal cursorline
 " fix for https://github.com/elixir-editors/vim-elixir/issues/562
 autocmd FileType heex set filetype=eelixir
 autocmd FileType rust,html,xml setlocal matchpairs-=<:>
