@@ -344,6 +344,7 @@ lua <<EOF
 	vim.keymap.set('n', '<C-a>', hoverhandler)
 	vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+	vim.keymap.set('n', 'gs', vim.lsp.buf.document_symbol)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references)
 	vim.keymap.set('n', '<C-c>', vim.lsp.buf.code_action)
