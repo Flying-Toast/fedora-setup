@@ -43,5 +43,5 @@
 - vim-minimal
 - gnome-tour
 - mediawriter
-- gedit
+- gnome-text-editor
 - anaconda-install-env-deps

@@ -6,7 +6,7 @@ awk '$1=="+"{print $2}' packages | xargs dnf install -y
 awk '$1=="+weak"{print $2}' packages | xargs dnf install -y
 awk '$1=="-"{print $2}' packages | xargs dnf remove -y
 
-ln -s /usr/bin/nvim /usr/bin/vim
+ln -s /usr/bin/nvim /usr/bin/vi
 
 updatedb
 
