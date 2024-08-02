@@ -26,7 +26,7 @@ dconf write $TERM_BASE/scrollbar-policy "'never'"
 dconf write $TERM_BASE/use-theme-colors false
 dconf write $TERM_BASE/foreground-color "'#ABB2BF'"
 dconf write $TERM_BASE/background-color "'#282C34'"
-dconf write $TERM_BASE/palette "['rgb(92,99,112)', 'rgb(224,108,117)', 'rgb(152,195,121)', 'rgb(209,154,102)', 'rgb(97,175,239)', 'rgb(198,120,221)', 'rgb(86,182,194)', 'rgb(171,178,191)', 'rgb(92,99,112)', 'rgb(224,108,117)', 'rgb(152,195,121)', 'rgb(209,154,102)', 'rgb(97,175,239)', 'rgb(198,120,221)', 'rgb(86,182,194)', 'rgb(171,178,191)']"
+dconf write $TERM_BASE/palette "['rgb(92,99,112)', 'rgb(228,104,118)', 'rgb(152,187,108)', 'rgb(209,154,102)', 'rgb(97,175,239)', 'rgb(149,127,184)', 'rgb(86,182,194)', 'rgb(171,178,191)', 'rgb(92,99,112)', 'rgb(224,108,117)', 'rgb(152,187,108)', 'rgb(209,154,102)', 'rgb(126,156,216)', 'rgb(198,120,221)', 'rgb(86,182,194)', 'rgb(171,178,191)']"
 
 # tweaks
 dconf write /org/gnome/desktop/input-sources/xkb-options "['lv3:ralt_switch', 'caps:escape']"
