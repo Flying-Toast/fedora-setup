@@ -7,15 +7,17 @@ Plug 'justinmk/vim-sneak'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'gregsexton/MatchTag'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'alvan/vim-closetag'
 Plug 'preservim/nerdtree'
-Plug 'dyng/ctrlsf.vim'
 if has("nvim")
 	Plug 'williamboman/mason.nvim'
 	Plug 'williamboman/mason-lspconfig.nvim'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	" telescope dependency:
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+	Plug 'davvid/telescope-git-grep.nvim'
 endif
 call plug#end()
 
@@ -83,17 +85,6 @@ let g:sneak#target_labels = "qwertyuiopasdfgzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM123
 
 let g:closetag_filenames = '*.html,*.xml,*.ui'
 
-let g:ctrlp_match_window = 'min:1,max:20'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_clear_cache_on_exit = 1
-let g:ctrlp_max_history = 0
-let g:ctrlp_mruf_max = 0
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_root_markers = ['Cargo.toml', 'mix.exs', 'dune-project']
-
-let g:ctrlsf_default_view_mode = "compact"
-let g:ctrlsf_regex_pattern = 1
-
 let NERDTreeBookmarksFile="/dev/null"
 let NERDTreeCascadeSingleChildDir=0
 let NERDTreeShowHidden=1
@@ -137,10 +128,10 @@ call CommandAbbrev("tm", "tab Man")
 call CommandAbbrev("th", "tab help")
 call CommandAbbrev("man", "Man")
 call CommandAbbrev("ft", "Ft")
-call CommandAbbrev("cs", "CtrlSF")
 
 " normal
-nnoremap <C-l> <Cmd>tabnew<CR><Cmd>CtrlP<CR>
+nnoremap <C-p> <Cmd>call TelescopeGitOrCwdFiles()<CR>
+nnoremap <C-l> <Cmd>tabnew<CR><Cmd>TelescopeGitOrCwdFiles()<CR>
 nnoremap <C-k> <Cmd>tabnext<CR>
 nnoremap <C-j> <Cmd>tabprevious<CR>
 nnoremap <Esc> <Cmd>noh<CR>
@@ -153,6 +144,7 @@ nnoremap <Leader>f <Cmd>call FormatCurrentBuffer()<CR>
 nnoremap <Leader>r <Cmd>call DoRunner()<CR>
 nnoremap <Leader>e <Cmd>call PopupTerm("cargo test", { 'on_exit': {job_id, code, event -> "foo"}})<CR>
 nnoremap <Leader>b <Cmd>call ToggleColorful()<CR>
+nnoremap <Leader>g <Cmd>call TelescopeGitOrCwdGrep()<cr>
 nnoremap <C-e> <CMD>NERDTreeToggle<CR>
 nnoremap gh <C-]>
 nnoremap <C-d> <CMD>call ShowBracketMatchLine()<CR>
@@ -239,6 +231,26 @@ func FileInCwdOrAbove(filename)
 	return findfile(a:filename, ".;")
 endfunc
 
+func DirInCwdOrAbove(filename)
+	return finddir(a:filename, ".;")
+endfunc
+
+func TelescopeGitOrCwdGrep()
+	if DirInCwdOrAbove(".git") != ""
+		Telescope git_grep
+	else
+		Telescope live_grep
+	endif
+endfunc
+
+func TelescopeGitOrCwdFiles()
+	if DirInCwdOrAbove(".git") != ""
+		Telescope git_files
+	else
+		Telescope find_files
+	endif
+endfunc
+
 func DoRunner()
 	let l:filename = tempname()
 	call writefile(getline(1, '$'), l:filename)
@@ -319,6 +331,16 @@ lua <<EOF
 			disable = { "vimdoc", "lua", "help", "vim" }
 		},
 	})
+	require("telescope").setup{
+		defaults = {
+			mappings = {
+				i = {
+					["<c-j>"] = "move_selection_next",
+					["<c-k>"] = "move_selection_previous",
+				}
+			}
+		}
+	}
 
 	local lspconfig = require('lspconfig')
 
@@ -344,14 +366,14 @@ lua <<EOF
 		vim.lsp.handlers.signature_help, { focusable=false, close_events={"CursorMoved"} }
 	)
 	local hoverhandler = function()
-		-- WHAT THE FUCK
+		-- first call opens window, second call focuses it
 		vim.lsp.buf.hover()
 		vim.lsp.buf.hover()
 	end
 	vim.keymap.set('n', '<C-a>', hoverhandler)
 	vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
-	vim.keymap.set('n', 'gs', vim.lsp.buf.document_symbol)
+	vim.keymap.set('n', 'gs', require('telescope.builtin').lsp_document_symbols)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references)
 	vim.keymap.set('n', '<C-c>', vim.lsp.buf.code_action)
