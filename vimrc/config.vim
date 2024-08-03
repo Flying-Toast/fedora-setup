@@ -356,8 +356,6 @@ lua <<EOF
 
 	lspconfig.rust_analyzer.setup({ on_attach=on_attach })
 	lspconfig.clangd.setup({ on_attach=on_attach })
-	lspconfig.jedi_language_server.setup({ on_attach=on_attach })
-	lspconfig.elixirls.setup({ on_attach=on_attach })
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 		vim.lsp.handlers.hover, { close_events={"QuitPre"} }
