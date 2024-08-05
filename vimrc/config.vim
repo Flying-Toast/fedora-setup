@@ -131,7 +131,7 @@ call CommandAbbrev("ft", "Ft")
 
 " normal
 nnoremap <C-p> <Cmd>call TelescopeGitOrCwdFiles()<CR>
-nnoremap <C-l> <Cmd>tabnew<CR><Cmd>TelescopeGitOrCwdFiles()<CR>
+nnoremap <C-l> <Cmd>tabnew<CR><Cmd>call TelescopeGitOrCwdFiles()<CR>
 nnoremap <C-k> <Cmd>tabnext<CR>
 nnoremap <C-j> <Cmd>tabprevious<CR>
 nnoremap <Esc> <Cmd>noh<CR>
