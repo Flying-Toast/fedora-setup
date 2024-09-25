@@ -1,4 +1,5 @@
 call plug#begin()
+Plug 'vim-crystal/vim-crystal'
 Plug 'Flying-Toast/quark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'Raimondi/delimitMate'
