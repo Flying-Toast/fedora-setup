@@ -241,8 +241,7 @@ func DoRunner()
 	let l:Cleanup = {job_id, code, event -> delete(l:filename)}
 	let l:termopts = { 'on_exit': l:Cleanup }
 
-	let l:baudir = DirInCwdOrAbove("build-aux")
-	if DirInCwdOrAbove("build-aux") != ""
+	if DirInCwdOrAbove(".fenv") != ""
 		call PopupTerm("fenv build && fenv run", l:termopts)
 		return
 	endif
