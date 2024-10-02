@@ -1,8 +1,5 @@
 #!/bin/bash
 
-systemctl --user enable emacs.service
-systemctl --user start emacs.service
-
 # rustup
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 rm ~/.cargo/env
