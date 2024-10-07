@@ -6,6 +6,7 @@ source /usr/share/bash-completion/bash_completion
 [[ -f $HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo ]] && source $HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo
 
 export LS_COLORS='di=0;34:ex=0;32:so=0;35:do=0;35:ln=0;36:cd=0;33:bd=0;33:or=0;31:'
+unset DEBUGINFOD_URLS
 
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
