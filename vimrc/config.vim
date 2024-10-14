@@ -63,13 +63,13 @@ func PatchColorScheme()
 	hi! link rustCommentBlockDoc Comment
 	hi! link elixirStringDelimiter String
 	hi! link TermExitMsg WarningMsg
-	hi! CurSearch guibg=white ctermbg=white ctermfg=black guifg=black cterm=underline gui=underline
+	hi! CurSearch guibg=blue ctermbg=blue ctermfg=black guifg=black cterm=underline gui=underline
 endfunc
 autocmd ColorScheme * call PatchColorScheme()
 syntax on
 colorscheme quark
 
-let g:lightline = {'colorscheme': 'quark'}
+let g:lightline = {}
 let g:lightline.tabline = {'left': [['tabs']], 'right': []}
 let g:lightline.tab = {'active': ['filename', 'modified'], 'inactive': ['filename', 'modified']}
 
