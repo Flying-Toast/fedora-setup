@@ -67,11 +67,6 @@ func PatchColorScheme()
 endfunc
 autocmd ColorScheme * call PatchColorScheme()
 syntax on
-let g:quark_colorful = 0
-func ToggleColorful()
-	let g:quark_colorful = !g:quark_colorful
-	colorscheme quark
-endfunc
 colorscheme quark
 
 let g:lightline = {'colorscheme': 'quark'}
@@ -141,7 +136,6 @@ nnoremap <Leader>s <Cmd>call StripTrailingWhitespace()<CR>
 nnoremap <Leader>f <Cmd>call FormatCurrentBuffer()<CR>
 nnoremap <Leader>r <Cmd>call DoRunner()<CR>
 nnoremap <Leader>e <Cmd>call PopupTerm("cargo test", { 'on_exit': {job_id, code, event -> "foo"}})<CR>
-nnoremap <Leader>b <Cmd>call ToggleColorful()<CR>
 nnoremap <Leader>g <Cmd>Telescope live_grep<cr>
 nnoremap <C-e> <CMD>NERDTreeToggle<CR>
 nnoremap gh <C-]>
