@@ -28,9 +28,7 @@ else
 	set laststatus=2
 	set viminfo=
 endif
-if &term =~ "xterm*" && &term != "xterm-old"
-	set termguicolors
-endif
+set notermguicolors
 set tabstop=8
 set shiftwidth=8
 set smartindent
